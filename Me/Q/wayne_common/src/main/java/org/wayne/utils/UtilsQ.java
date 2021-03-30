@@ -9,12 +9,16 @@ import java.util.*;
  * @author: lwq
  */
 public class UtilsQ {
-    private static SimpleDateFormat sdf;
+    final static SimpleDateFormat YYYY_MM_DD_FORMAT;
+    final static SimpleDateFormat MM_DD_FORMAT;
 
     static {
-        sdf = new SimpleDateFormat("yyyy-MM-dd");
+        YYYY_MM_DD_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
         //严格日期检查
-        sdf.setLenient(false);
+        YYYY_MM_DD_FORMAT.setLenient(false);
+        MM_DD_FORMAT = new SimpleDateFormat("MM-dd");
+        MM_DD_FORMAT.setLenient(false);
+
     }
 
     /**
@@ -25,7 +29,7 @@ public class UtilsQ {
      * @return
      * @throws ParseException
      */
-    public String getNextWorkDay(String dataDay, List<String> freeDayList) throws ParseException {
+    public static String getNextWorkDay(String dataDay, List<String> freeDayList) throws ParseException {
         dataDay = addOrSubDay(dataDay, 1);
         //休息日
         while (freeDayList.contains(dataDay)) {
@@ -43,8 +47,8 @@ public class UtilsQ {
      * @throws ParseException
      */
     public static int getBetweenDayCounts(String minDate, String bigDate) throws ParseException {
-        final Date p1 = sdf.parse(bigDate);
-        final Date p2 = sdf.parse(minDate);
+        final Date p1 = YYYY_MM_DD_FORMAT.parse(bigDate);
+        final Date p2 = YYYY_MM_DD_FORMAT.parse(minDate);
         return (int) (Math.abs(p1.getTime() - p2.getTime()) / (60 * 60 * 24 * 1000));
     }
 
@@ -56,11 +60,11 @@ public class UtilsQ {
      * @return
      */
     public static String addOrSubDay(String date, int count) throws ParseException {
-        final Date parse = sdf.parse(date);
+        final Date parse = YYYY_MM_DD_FORMAT.parse(date);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(parse);
         calendar.add(Calendar.DAY_OF_MONTH, count);
-        return sdf.format(calendar.getTime());
+        return YYYY_MM_DD_FORMAT.format(calendar.getTime());
     }
 
     public static Date addOrSubDay(Date date, int count) {
@@ -102,7 +106,7 @@ public class UtilsQ {
         }
         while (true) {
             start = addOrSubDay(start, 1);
-            if (sdf.parse(start).after(sdf.parse(end)) || start.equals(end)) {
+            if (YYYY_MM_DD_FORMAT.parse(start).after(YYYY_MM_DD_FORMAT.parse(end)) || start.equals(end)) {
                 break;
             }
             dates.add(start);
