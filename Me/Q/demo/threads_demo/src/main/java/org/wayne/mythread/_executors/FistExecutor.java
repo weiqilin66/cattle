@@ -1,4 +1,4 @@
-package wayne.mythread._executors;
+package org.wayne.mythread._executors;
 
 import java.util.ArrayList;
 import java.util.List;

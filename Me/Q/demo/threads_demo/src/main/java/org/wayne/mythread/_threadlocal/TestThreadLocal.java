@@ -1,4 +1,4 @@
-package wayne.mythread._threadlocal;
+package org.wayne.mythread._threadlocal;
 
 /**
  * @Description: 变量值的共享可以使用public static变量的形式，所有线程都使用一个public static变量。

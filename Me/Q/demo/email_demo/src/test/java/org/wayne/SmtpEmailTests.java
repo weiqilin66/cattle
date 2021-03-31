@@ -1,4 +1,4 @@
-package wayne;
+package org.wayne;
 
 import com.netflix.discovery.converters.Auto;
 import org.junit.jupiter.api.Test;

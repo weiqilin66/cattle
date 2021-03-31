@@ -17,7 +17,7 @@ import java.io.InputStream;
  * @TODO:
  * @author: lwq
  */
-public class MybatisDemo {
+public class MybatisDemo1 {
     /**
      * 每个基于 MyBatis 的应用都是以一个 SqlSessionFactory 的实例为核心的。SqlSessionFactory 的实例可以通过 SqlSessionFactoryBuilder 获得
      */

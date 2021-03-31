@@ -1,4 +1,4 @@
-package wayne.mythread._lock._readwritelock;
+package org.wayne.mythread._lock._readwritelock;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 

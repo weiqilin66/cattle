@@ -1,4 +1,4 @@
-package wayne.mapper;
+package org.wayne.mapper;
 
 import org.wayne.entity.DeductApply;
 import tk.mybatis.mapper.common.Mapper;

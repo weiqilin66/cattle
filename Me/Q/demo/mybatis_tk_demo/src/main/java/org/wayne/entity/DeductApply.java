@@ -1,4 +1,4 @@
-package wayne.entity;
+package org.wayne.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

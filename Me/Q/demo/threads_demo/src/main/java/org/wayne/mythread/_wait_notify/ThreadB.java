@@ -1,4 +1,4 @@
-package wayne.mythread._wait_notify;
+package org.wayne.mythread._wait_notify;
 
 /**
  *

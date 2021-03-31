@@ -1,4 +1,4 @@
-package wayne.config;
+package org.wayne.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;

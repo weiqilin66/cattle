@@ -1,4 +1,4 @@
-package wayne.menu;
+package org.wayne.menu;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

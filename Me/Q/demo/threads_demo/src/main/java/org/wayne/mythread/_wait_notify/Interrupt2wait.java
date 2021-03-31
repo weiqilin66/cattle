@@ -1,4 +1,4 @@
-package wayne.mythread._wait_notify;
+package org.wayne.mythread._wait_notify;
 
 /**
  * @Description:  当线程呈wait状态时，对线程对象调用interrupt方法会出现InterrupedException异常

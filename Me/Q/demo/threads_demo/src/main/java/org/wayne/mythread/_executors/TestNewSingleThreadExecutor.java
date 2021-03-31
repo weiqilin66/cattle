@@ -1,4 +1,4 @@
-package wayne.mythread._executors;
+package org.wayne.mythread._executors;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

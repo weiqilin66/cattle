@@ -1,4 +1,4 @@
-package wayne.utils;
+package org.wayne.utils;
 
 
 import java.text.ParseException;

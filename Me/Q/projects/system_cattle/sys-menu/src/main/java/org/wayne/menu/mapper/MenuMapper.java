@@ -1,4 +1,4 @@
-package wayne.menu.mapper;
+package org.wayne.menu.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.wayne.menu.entity.Menu;

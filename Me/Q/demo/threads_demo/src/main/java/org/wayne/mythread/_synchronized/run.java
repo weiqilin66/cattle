@@ -1,4 +1,4 @@
-package wayne.mythread._synchronized;
+package org.wayne.mythread._synchronized;
 
 /**
  * @Description:

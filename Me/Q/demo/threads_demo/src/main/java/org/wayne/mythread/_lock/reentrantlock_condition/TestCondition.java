@@ -1,4 +1,4 @@
-package wayne.mythread._lock.reentrantlock_condition;
+package org.wayne.mythread._lock.reentrantlock_condition;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

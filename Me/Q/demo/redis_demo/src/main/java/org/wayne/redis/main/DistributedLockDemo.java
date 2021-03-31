@@ -1,4 +1,4 @@
-package wayne.redis.main;
+package org.wayne.redis.main;
 
 
 import org.wayne.redis.config.CallWithJedis;

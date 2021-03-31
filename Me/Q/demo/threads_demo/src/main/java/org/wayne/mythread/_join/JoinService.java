@@ -1,4 +1,4 @@
-package wayne.mythread._join;
+package org.wayne.mythread._join;
 
 /**
  * @Description: 主线程需要等待子线程执行完成之后再结束

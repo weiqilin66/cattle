@@ -1,4 +1,4 @@
-package wayne.mythread._synchronized_block;
+package org.wayne.mythread._synchronized_block;
 
 /**
  * @Description: 同步代码块 当一个同步方法执行比较久时可以使用代码块优化

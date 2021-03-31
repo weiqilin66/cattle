@@ -1,4 +1,4 @@
-package wayne.zuul.filter;
+package org.wayne.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;

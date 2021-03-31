@@ -1,4 +1,4 @@
-package wayne.menu.service;
+package org.wayne.menu.service;
 
 
 import org.springframework.cache.annotation.Cacheable;

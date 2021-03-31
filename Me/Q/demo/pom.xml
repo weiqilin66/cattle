@@ -10,6 +10,7 @@
         <module>threads_demo</module>
         <module>reflex_demo</module>
         <module>email_demo</module>
+        <module>mybatis_demo</module>
     </modules>
 
     <parent>

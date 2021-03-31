@@ -1,4 +1,4 @@
-package wayne.mythread._daemon;
+package org.wayne.mythread._daemon;
 
 /**
  * @Description: Thread.sleep() 当前!线程休息ms  在main中表示main线程休息ms

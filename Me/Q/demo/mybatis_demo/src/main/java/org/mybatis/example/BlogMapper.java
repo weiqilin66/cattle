@@ -1,9 +1,9 @@
-package org.example;
+package org.mybatis.example;
 
 /**
  * @TODO:
  * @author: lwq
  */
 public interface BlogMapper {
-    Blog selectBlog();
+    Blog selectBlog(int id);
 }
