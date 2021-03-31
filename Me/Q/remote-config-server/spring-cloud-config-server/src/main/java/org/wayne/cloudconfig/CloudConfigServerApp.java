@@ -1,4 +1,4 @@
-package org.wayne.cloudconfig;
+package wayne.cloudconfig;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

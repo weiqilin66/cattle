@@ -1,4 +1,4 @@
-package org.wayne.menu.entity;
+package wayne.menu.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

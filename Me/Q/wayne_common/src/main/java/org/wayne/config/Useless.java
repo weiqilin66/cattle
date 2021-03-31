@@ -1,4 +1,4 @@
-package org.wayne.config;
+package wayne.config;
 
 
 import org.wayne.entity.RespBeanQ;

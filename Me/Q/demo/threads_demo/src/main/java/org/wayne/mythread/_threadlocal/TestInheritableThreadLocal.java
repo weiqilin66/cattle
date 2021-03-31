@@ -1,4 +1,4 @@
-package org.wayne.mythread._threadlocal;
+package wayne.mythread._threadlocal;
 
 import java.util.Date;
 

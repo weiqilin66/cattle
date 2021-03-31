@@ -1,4 +1,4 @@
-package org.wayne.mythread._lock.reentrantlock_condition;
+package wayne.mythread._lock.reentrantlock_condition;
 
 /**
  * @Description:

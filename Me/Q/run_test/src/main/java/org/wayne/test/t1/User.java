@@ -1,4 +1,4 @@
-package org.wayne.test.t1;
+package wayne.test.t1;
 
 /**
  * @TODO:

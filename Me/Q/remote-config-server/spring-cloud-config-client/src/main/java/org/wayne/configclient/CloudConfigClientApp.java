@@ -1,4 +1,4 @@
-package org.wayne.configclient;
+package wayne.configclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

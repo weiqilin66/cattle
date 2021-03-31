@@ -1,9 +1,8 @@
-package org.wayne.utils;
+package wayne.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 

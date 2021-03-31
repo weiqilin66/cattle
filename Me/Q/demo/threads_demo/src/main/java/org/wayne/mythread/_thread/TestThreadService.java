@@ -1,4 +1,4 @@
-package org.wayne.mythread._thread;
+package wayne.mythread._thread;
 
 import org.springframework.stereotype.Service;
 

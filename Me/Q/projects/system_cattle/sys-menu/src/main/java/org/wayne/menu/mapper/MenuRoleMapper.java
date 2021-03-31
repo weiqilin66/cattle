@@ -1,4 +1,4 @@
-package org.wayne.menu.mapper;
+package wayne.menu.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;

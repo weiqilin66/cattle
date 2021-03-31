@@ -1,4 +1,4 @@
-package org.wayne.gateway;
+package wayne.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package org.wayne.mythread._daemon;
+package wayne.mythread._daemon;
 
 /**
  * @Description: setDaemon(true)设置守护线程 在start前设置

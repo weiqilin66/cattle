@@ -1,4 +1,4 @@
-package org.wayne.reflex;
+package wayne.reflex;
 import java.lang.reflect.Method;
 
 /**

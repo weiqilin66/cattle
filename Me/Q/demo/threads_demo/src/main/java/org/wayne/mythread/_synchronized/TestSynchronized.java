@@ -1,4 +1,4 @@
-package org.wayne.mythread._synchronized;
+package wayne.mythread._synchronized;
 
 /**
  * @Description: 非静态synchronized取得的锁都是对象锁，而不是把一段代码或方法当做锁

@@ -1,4 +1,4 @@
-package org.wayne.mythread._volatile;
+package wayne.mythread._volatile;
 
 import com.lwq.threadnio.mythread._synchronized_block.MyObject;
 

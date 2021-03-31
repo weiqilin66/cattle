@@ -1,4 +1,4 @@
-package org.wayne.redis.config;
+package wayne.redis.config;
 
 import redis.clients.jedis.Jedis;
 

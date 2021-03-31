@@ -1,4 +1,4 @@
-package org.wayne.entity;
+package wayne.entity;
 
 /**
  * @Description: 响应类

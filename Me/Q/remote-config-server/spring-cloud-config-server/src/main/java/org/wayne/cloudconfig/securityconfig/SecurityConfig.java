@@ -1,4 +1,4 @@
-package org.wayne.cloudconfig.securityconfig;
+package wayne.cloudconfig.securityconfig;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

@@ -1,4 +1,4 @@
-package org.wayne.zuul;
+package wayne.zuul;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package org.wayne.mythread._priority;
+package wayne.mythread._priority;
 
 import com.lwq.threadnio.mythread._thread.MyThread1;
 
