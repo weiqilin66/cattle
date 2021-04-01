@@ -33,6 +33,8 @@ public class MybatisDemo1 {
 
             final BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
             final Blog blog = mapper.selectBlog(1);
+            sqlSession.commit();
+            sqlSession.rollback();
             System.out.printf("查询到的标题为:%s\n",blog.getTitle());
         }
     }
