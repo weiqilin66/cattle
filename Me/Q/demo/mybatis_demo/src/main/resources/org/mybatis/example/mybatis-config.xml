@@ -2,6 +2,7 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--mybatis 基本配置文件-->
 <configuration>
     <environments default="development">
         <environment id="development">
@@ -14,7 +15,11 @@
             </dataSource>
         </environment>
     </environments>
+    <!--引入的是xml 无需定义引入*mapper.java-->
     <mappers>
         <mapper resource="org/mybatis/example/BlogMapper.xml"/>
     </mappers>
+<!-- 自定义类型处理器
+    <typeHandlers></typeHandlers>
+-->
 </configuration>
