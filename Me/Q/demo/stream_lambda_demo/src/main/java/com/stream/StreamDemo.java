@@ -30,6 +30,23 @@ import java.util.stream.Stream;
  * 2.通过中间操作，对原始Stream进行“变化”并生成新的Stream
  * 3.使用完结操作，生成最终结果
  *
+ *4个常用接口(不用自定义接口作为函数载体)
+ * Predicate<T>    输入一个参数，返回一个boolean值，                                 内置了许多用于逻辑判断的默认方法
+ * Function<T, R>  接受一个参数，返回单一的结果。形成复合Funtion（有输入，有输出）结果    默认的方法（andThen）可将多个函数串在一起
+ * Consumer<T>     对输入的参数进行操作。有输入没输出(可用于更新入参)
+ * eg:
+ *  Predicate<String> predicateStr = s -> s.length()>8
+ *  Function<Integer, Integer> add = (i) -> {
+ *             System.out.println("frist input:" + i);
+ *             return i * 2;
+ *         };
+ *  Consumer<Integer> add5 = (p) -> {
+ *             System.out.println("old value:" + p);
+ *             p = p + 5;
+ *             System.out.println("new value:" + p);
+ *         };
+ *         add5.accept(10);
+ *
  *
  * @author: LinWeiQi
  */
