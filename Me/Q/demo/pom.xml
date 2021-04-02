@@ -11,6 +11,7 @@
         <module>reflex_demo</module>
         <module>email_demo</module>
         <module>mybatis_demo</module>
+        <module>quartz_demo</module>
     </modules>
 
     <parent>

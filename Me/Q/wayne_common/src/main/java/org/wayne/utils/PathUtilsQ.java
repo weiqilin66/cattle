@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Description: 各种路径取值
@@ -43,6 +44,13 @@ public class PathUtilsQ {
         URI packuri = new URI(packName);
         System.out.println("当前类所在URI: "+packuri.getPath());
 
+        /**
+         * 测试性能使用
+         */
+        long startTime = System.nanoTime();//返回最准确的可用系统计时器的当前值，以毫微秒为单位。
+        long endTime = System.nanoTime();
+        long millis = TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
+        System.out.printf("串行排序花费时间：%d ms",millis);
     }
 
 
