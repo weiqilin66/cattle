@@ -8,13 +8,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mybatis.example.Blog;
-import org.mybatis.example.BlogMapper;
+import org.mybatis.example.mapper.BlogMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @TODO:
+ * @TODO: 原生builder->sqlSessionFactory->sqlSession->mapper->执行sql
  * @author: lwq
  */
 public class MybatisDemo1 {
