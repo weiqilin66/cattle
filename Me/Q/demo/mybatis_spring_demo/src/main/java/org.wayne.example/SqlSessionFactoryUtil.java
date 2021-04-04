@@ -1,4 +1,4 @@
-package org.mybatis.example;
+package org.wayne.example;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -25,7 +25,7 @@ public class SqlSessionFactoryUtil {
     }
 
     public static SqlSessionFactory initSqlSessionFactory() {
-        String resource = "org/mybatis/example/mybatis-config.xml";
+        String resource = "org/wayne/example/mybatis-config.xml";
         InputStream inputStream = null;
         try {
             inputStream = Resources.getResourceAsStream(resource);

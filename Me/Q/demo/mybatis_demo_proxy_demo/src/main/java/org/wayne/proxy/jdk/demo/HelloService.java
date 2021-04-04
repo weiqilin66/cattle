@@ -1,4 +1,4 @@
-package org.proxy.jdk.demo;
+package org.wayne.proxy.jdk.demo;
 
 /**
  * @TODO: jdk代理必须有接口

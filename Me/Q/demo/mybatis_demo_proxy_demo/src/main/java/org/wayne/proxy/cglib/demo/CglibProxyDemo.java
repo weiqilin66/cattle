@@ -1,7 +1,5 @@
-package org.proxy.cglib.demo;
+package org.wayne.proxy.cglib.demo;
 
-import org.apache.ibatis.annotations.Arg;
-import org.proxy.jdk.demo.HelloServiceImpl;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;

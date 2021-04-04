@@ -1,4 +1,4 @@
-package org.proxy.cglib.demo;
+package org.wayne.proxy.cglib.demo;
 
 /**
  * @TODO: 被代理的对象 不用实现某个接口

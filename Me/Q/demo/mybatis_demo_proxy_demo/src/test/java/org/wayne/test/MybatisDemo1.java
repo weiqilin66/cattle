@@ -7,8 +7,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mybatis.example.Blog;
-import org.mybatis.example.mapper.BlogMapper;
+import org.wayne.example.Blog;
+import org.wayne.example.BlogMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +23,7 @@ public class MybatisDemo1 {
      */
     @Test
     public void init() throws IOException {
-        String resource = "org/mybatis/example/mybatis-config.xml";
+        String resource = "org/wayne/example/mybatis-config.xml";
         // 使用mybatis的Resources工具类加载配置
         InputStream inputStream = Resources.getResourceAsStream(resource);
         // SqlSessionFactoryBuilder获得 sqlSessionFactory

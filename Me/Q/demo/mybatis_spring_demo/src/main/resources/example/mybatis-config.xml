@@ -15,9 +15,8 @@
             </dataSource>
         </environment>
     </environments>
-    <!--引入的是xml 无需定义引入*mapper.java-->
     <mappers>
-        <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+        <mapper resource="org/wayne/example/BlogMapper.xml"/>
     </mappers>
 <!-- 自定义类型处理器
     <typeHandlers></typeHandlers>

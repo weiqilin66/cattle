@@ -1,4 +1,4 @@
-package org.mybatis.example;
+package org.wayne.example;
 
 /**
  * @TODO:
