@@ -13,10 +13,12 @@ package org.wayne.mythread._synchronized;
  * 同步不具有继承性
  * @author: LinWeiQi
  */
-public class run {
+public class RunMain {
         public static void main(String[] args) {
             try {
                 SynchronizedDemo obj = new SynchronizedDemo();
+                System.out.println("初始值:");
+                obj.getValue();
                 MyThread thread = new MyThread(obj);
                 thread.start();
 
@@ -24,6 +26,7 @@ public class run {
 
                 System.out.println("非同步getValue:(立即获得)");
                 obj.getValue();
+                System.out.println("");
                 System.out.println("同步getSynValue:(由于thread获得了对象obj锁所以执行此方法会等待5s)");
                 obj.getSynValue();
                 Thread.sleep(5000);

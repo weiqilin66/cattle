@@ -11,7 +11,7 @@ public class SynchronizedDemo {
     synchronized public void setValue(String username, String password) {
         try {
             this.username = username;
-            System.out.println("name="+Thread.currentThread().getName()+" set userName 完成");
+            System.out.println("线程"+Thread.currentThread().getName()+" 修改了username= BB,password =BB 完成");
             Thread.sleep(5000);
             this.password = password;
 
