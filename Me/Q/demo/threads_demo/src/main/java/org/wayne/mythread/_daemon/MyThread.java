@@ -1,7 +1,8 @@
 package org.wayne.mythread._daemon;
 
 /**
- * @Description: Thread.sleep() 当前!线程休息ms  在main中表示main线程休息ms
+ * @Description: Thread.sleep() 当前线程休息ms
+ * 在main中表示main线程休息ms
  * @author: LinWeiQi
  */
 public class MyThread extends Thread {

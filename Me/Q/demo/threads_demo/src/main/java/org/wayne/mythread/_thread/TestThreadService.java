@@ -1,6 +1,5 @@
 package org.wayne.mythread._thread;
 
-import org.springframework.stereotype.Service;
 
 /**
  * @Description:
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Service;
  * synchronized 可解决单对象实例变量的线程安全问题
  * @author: LinWeiQi
  */
-@Service
 public class TestThreadService implements Runnable {
     int count = 5;
 

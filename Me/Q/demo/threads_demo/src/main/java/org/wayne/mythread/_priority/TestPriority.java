@@ -1,6 +1,7 @@
 package org.wayne.mythread._priority;
 
-import com.lwq.threadnio.mythread._thread.MyThread1;
+
+import org.wayne.mythread._thread.MyThread1;
 
 /**
  * @Description: priority继承性 随机性

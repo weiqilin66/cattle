@@ -16,7 +16,7 @@ package org.wayne.mythread._synchronized;
 public class run {
         public static void main(String[] args) {
             try {
-                TestSynchronized obj = new TestSynchronized();
+                SynchronizedDemo obj = new SynchronizedDemo();
                 MyThread thread = new MyThread(obj);
                 thread.start();
 

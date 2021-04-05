@@ -1,7 +1,7 @@
 package org.wayne.mythread._thread;
 
 /**
- * @Description:
+ * @Description: 继承Thread 实现Runnable 来定义线程类
  * @author: LinWeiQi
  */
 public class MyThread1 extends Thread {

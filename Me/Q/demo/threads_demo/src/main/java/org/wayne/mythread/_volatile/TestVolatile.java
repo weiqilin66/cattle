@@ -1,6 +1,7 @@
 package org.wayne.mythread._volatile;
 
-import com.lwq.threadnio.mythread._synchronized_block.MyObject;
+
+import org.wayne.mythread._synchronized_block.MyObject;
 
 /**
  * @Description: volatile(不稳定)指示JVM每次都到主存中读取变量

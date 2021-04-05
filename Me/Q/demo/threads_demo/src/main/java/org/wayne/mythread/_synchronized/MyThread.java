@@ -5,9 +5,9 @@ package org.wayne.mythread._synchronized;
  * @author: LinWeiQi
  */
 public class MyThread extends Thread {
-    private TestSynchronized obj;
+    private SynchronizedDemo obj;
 
-    public MyThread(TestSynchronized obj) {
+    public MyThread(SynchronizedDemo obj) {
         super();
         this.obj = obj;
     }
