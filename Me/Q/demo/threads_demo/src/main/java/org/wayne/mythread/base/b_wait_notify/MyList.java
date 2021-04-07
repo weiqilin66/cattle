@@ -1,4 +1,4 @@
-package org.wayne.mythread.b_wait_notify;
+package org.wayne.mythread.base.b_wait_notify;
 
 import java.util.ArrayList;
 import java.util.List;

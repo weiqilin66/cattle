@@ -1,4 +1,4 @@
-package org.wayne.mythread.g_synchronized_block;
+package org.wayne.mythread.base.d_synchronized.block;
 
 /**
  * @Description: 测试同步代码块

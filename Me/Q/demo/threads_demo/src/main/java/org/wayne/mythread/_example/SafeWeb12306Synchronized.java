@@ -1,14 +1,13 @@
-package org.wayne.mythread.a_thread.demo;
+package org.wayne.mythread._example;
 
 /**
- * @TODO: 模拟抢票,网络延迟
- * 一份资源,多人共享 = 并发
+ * @TODO: 队列+锁机制
  * @author: lwq
  */
-public class Web12306 implements Runnable {
-    private int num = 50;
+public class SafeWeb12306Synchronized implements Runnable {
+    private int num = 20;
     @Override
-    public void run() {
+    synchronized public void run() {
         while (true){
             if (num<0) {
                 break;
@@ -23,11 +22,10 @@ public class Web12306 implements Runnable {
         }
     }
 
-
     public static void main(String[] args) {
         // 一份资源(单实例)
         // 或者使用多实例但是票资源num为static只有一份实例变量
-        final Web12306 obj = new Web12306();
+        final SafeWeb12306Synchronized obj = new SafeWeb12306Synchronized();
         // 多线程强
         new Thread(obj,"线程1").start();
         new Thread(obj,"线程2").start();

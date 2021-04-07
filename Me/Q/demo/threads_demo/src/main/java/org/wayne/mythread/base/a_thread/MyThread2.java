@@ -1,4 +1,4 @@
-package org.wayne.mythread.a_thread;
+package org.wayne.mythread.base.a_thread;
 
 /**
  * @Description:

@@ -1,13 +1,17 @@
-package org.wayne.mythread.d_synchronized;
+package org.wayne.mythread.base.d_synchronized.method;
 
 /**
- * @Description: 非静态synchronized取得的锁都是对象锁，而不是把一段代码或方法当做锁
+ * @Description: Synchronized方法锁, 块级锁
+ * 都会大大影响性能
+ * 块级锁性能好些,但是可能锁不住,看锁的范围,过大等于方法锁
  * @author: LinWeiQi
  */
 public class SynchronizedDemo {
     public String username = "A";
     public String password = "AA";
 
+    // 方法锁
+    // 锁数据修改的那个方法
     synchronized public void setValue(String username, String password) {
         try {
             this.username = username;

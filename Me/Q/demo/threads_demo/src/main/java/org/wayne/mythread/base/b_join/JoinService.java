@@ -1,4 +1,4 @@
-package org.wayne.mythread.b_join;
+package org.wayne.mythread.base.b_join;
 
 /**
  * @Description: join 插队线程

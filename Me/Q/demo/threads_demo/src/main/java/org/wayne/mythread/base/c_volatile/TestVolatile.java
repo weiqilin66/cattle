@@ -1,7 +1,7 @@
-package org.wayne.mythread.c_volatile;
+package org.wayne.mythread.base.c_volatile;
 
 
-import org.wayne.mythread.g_synchronized_block.MyObject;
+import org.wayne.mythread.base.d_synchronized.block.MyObject;
 
 /**
  * @Description: volatile(不稳定)指示JVM每次都到主存中读取变量

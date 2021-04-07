@@ -1,4 +1,4 @@
-package org.wayne.mythread.a_thread;
+package org.wayne.mythread.base.a_thread;
 
 /**
  * @Description: 继承Thread 实现Runnable 来定义线程类
