@@ -27,12 +27,11 @@ public class StaticProxyDemo {
 
 
     // 婚介公司
-    class MarryHelp implements Marry{
+    class MarryHelp {
         private Marry object;
         public MarryHelp(Marry o){
             this.object = o;
         }
-        @Override
         public void marry(String name) {
             System.out.println("婚前忙");
             this.object.marry(name);
