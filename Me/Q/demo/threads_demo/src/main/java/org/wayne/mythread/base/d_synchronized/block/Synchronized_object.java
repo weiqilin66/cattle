@@ -3,20 +3,18 @@ package org.wayne.mythread.base.d_synchronized.block;
 /**
  * @Description: 同步代码块 当一个同步方法执行比较久时可以使用代码块优化
  * 同步synchronized方法获得的是对象(实例)锁
- *  静态(static)同步(synchronized)方法与 synchronized(class)代码块持有的锁一样，都是Class锁，Class锁对对象的所有实例起作用。
- *  synchronized关键字加到非static静态方法上持有的是对象锁
  * @author: LinWeiQi
  */
 public class Synchronized_object {
     /**
-     * 同步代码块(object) 锁的是object类
-     * object为对象监视器 线程使用了同一个“对象监视器”,所以运行结果是同步的
-     * 线程类的构造方法中加入一个随意obj对象 同一个对象则是同步 ,不同obj监视器,不同步
+     * 同步代码块(object) 是类锁, 不管这个作为锁的类有多少个实例,只有一个线程可以获得锁
+     * 线程使用了同一个“对象监视器”,所以运行结果是同步的
      * obj最好不要String 因为字符串存在常量池 两个相同的字符串指向同一个地址 会获得相同的锁 导致只有一个线程可以运行
      */
     public void t2(MyObject object){
 
-        synchronized (object){//MyObject上锁
+        //MyObject上锁
+        synchronized (object){
             try {
                 System.out.println("testMethod1 ____getLock time="
                         + System.currentTimeMillis() + " run ThreadName="
