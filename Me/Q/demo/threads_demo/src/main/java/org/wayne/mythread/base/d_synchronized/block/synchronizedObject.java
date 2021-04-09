@@ -1,19 +1,16 @@
 package org.wayne.mythread.base.d_synchronized.block;
 
 /**
- * @Description: 同步代码块 当一个同步方法执行比较久时可以使用代码块优化
- * 同步synchronized方法获得的是对象(实例)锁
  * @author: LinWeiQi
  */
-public class Synchronized_object {
+public class synchronizedObject {
     /**
-     * 同步代码块(object) 是类锁, 不管这个作为锁的类有多少个实例,只有一个线程可以获得锁
      * 线程使用了同一个“对象监视器”,所以运行结果是同步的
      * obj最好不要String 因为字符串存在常量池 两个相同的字符串指向同一个地址 会获得相同的锁 导致只有一个线程可以运行
      */
     public void t2(MyObject object){
 
-        //MyObject上锁
+        //MyObject上锁 锁的是传入对象的地址(对象地址不变就是同一个监视器,=>同一把锁)
         synchronized (object){
             try {
                 System.out.println("testMethod1 ____getLock time="
@@ -31,7 +28,7 @@ public class Synchronized_object {
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("同对象监视器");
-        Synchronized_object s1 = new Synchronized_object();
+        synchronizedObject s1 = new synchronizedObject();
         MyObject object = new MyObject();
         MyThread t1 = new MyThread(s1,object);
         MyThread t2 = new MyThread(s1,object);

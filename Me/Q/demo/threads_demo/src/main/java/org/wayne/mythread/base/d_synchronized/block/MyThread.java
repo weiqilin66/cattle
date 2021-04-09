@@ -6,14 +6,14 @@ package org.wayne.mythread.base.d_synchronized.block;
  */
 public class MyThread extends Thread {
     private MyObject object;
-    private Synchronized_object synchronized_object;
+    private synchronizedObject synchronizedObject;
 
-    public MyThread(Synchronized_object synchronized_object,MyObject object){
+    public MyThread(synchronizedObject synchronizedObject, MyObject object){
         this.object = object;
-        this.synchronized_object = synchronized_object;
+        this.synchronizedObject = synchronizedObject;
     }
     @Override
     public void run() {
-        synchronized_object.t2(object);
+        synchronizedObject.t2(object);
     }
 }
