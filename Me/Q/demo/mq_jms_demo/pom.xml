@@ -9,11 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mq_demo</artifactId>
+    <artifactId>mq_jms_demo</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>activemq_demo</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

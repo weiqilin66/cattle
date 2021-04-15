@@ -5,13 +5,12 @@
     <!--各个项目可以有不同版本的依赖-->
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.wayne</groupId>
     <artifactId>projects</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>batch_cattle</module>
-    </modules>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

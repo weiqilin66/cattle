@@ -1,37 +1,37 @@
-# ï¿½ï¿½ï¿½ï¿½hystrix
-# ï¿½ï¿½ï¿½ï¿½
-# Â·ï¿½ï¿½ï¿½ï¿½Ð´
-# ï¿½ï¿½Ì¬Â·ï¿½ï¿½
+# ¼¯³Éhystrix
+# ±Èzuul¶àÁËÏÞÁ÷ ,ÇëÇóÀàÐÍÏÞÖÆ
+# Â·¾¶ÖØÐ´
+# ¶¯Ì¬Â·ÓÉ
 
 spring:
   cloud:
     gateway:
       routes:
         - id: wayne_provide
-          uri: lb://provide # lb(loadBalanced) ï¿½ï¿½provideï¿½Ð¶ï¿½ï¿½Êµï¿½ï¿½ ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
-          filters: # ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½
-            - AddRequestParameter=name,wayne  # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nameÖµwayne
-          predicates: # ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½...Îªï¿½ï¿½ï¿½ï¿½)
+          uri: lb://provide # lb(loadBalanced) µ±provideÓÐ¶à¸öÊµÀý ×Ô¶¯¸ºÔØ¾ùºâ
+          filters: # ¾Ö²¿¹ýÂË
+            - AddRequestParameter=name,wayne  # ¹ýÂËÆ÷ ÇëÇó×ª·¢Ê±Ìí¼ÓÒ»¸ö²ÎÊýnameÖµwayne
+          predicates: # ¶ÏÑÔ(ÒÔ...Îª¸ù¾Ý)
             - Method=GET
-#            - Path=/provide-api/** # Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
-            - Path=/provide-api/{segment}  # ï¿½ï¿½ï¿½ï¿½PathÂ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½provide ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½http://localhost:2223/provide-api/xx ï¿½ï¿½ï¿½ï¿½404
+#            - Path=/provide-api/** # Ð§¹ûºÍÏÂÃæÒ»Ñù
+            - Path=/provide-api/{segment}  # Õû¸öPathÂ·¾¶¶¼»á×ª·¢µ½provide ¼È×ª·¢µ½http://localhost:2223/provide-api/xx ËùÒÔ404
 
-          # ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½Í·
+          # Êý×é - ¿ªÍ·
         - id: wayne_route
-          uri: http://httpbin.org # ï¿½ï¿½×ªï¿½ï¿½Â·ï¿½ï¿½uri
-          predicates: # ï¿½ï¿½ï¿½ï¿½ Â·ï¿½ï¿½Ó³ï¿½ï¿½(ï¿½É»ï¿½ï¿½Ê¹ï¿½ï¿½)
-            - Path=/get # ×ªï¿½ï¿½ï¿½ï¿½http://httpbin.org/get
-            - Method=GET # Ö»×ªï¿½ï¿½GETï¿½ï¿½ï¿½ï¿½ POSTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½404,Ã»ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½È¥
-#            - Path=/get/{segment} # ï¿½ï¿½ï¿½ï¿½/get/**ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½http://httpbin.org/get/xxx ï¿½ï¿½ï¿½ï¿½404
-            - Query=name # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¯ï¿½ï¿½nameï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ 404
-            - Query=name,java.* # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¯ï¿½ï¿½nameï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½javaï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ 404
-#            - After=... ï¿½Ä¸ï¿½Ê±ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½ Before= ...
-      default-filters: # È«ï¿½Ö¹ï¿½ï¿½ï¿½
-        - StripPrefix=1 # È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°×º1ï¿½ï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½urlÇ°×ºï¿½ï¿½ï¿½ï¿½
+          uri: http://httpbin.org # Ìø×ªµÄÂ·¾¶uri
+          predicates: # ¶ÏÑÔ Â·¾¶Ó³Éä(¿É»ìºÏÊ¹ÓÃ)
+            - Path=/get # ×ª·¢µ½http://httpbin.org/get
+            - Method=GET # Ö»×ª·¢GETÇëÇó POSTÇëÇóµ¼ÖÂ404,Ã»´úÀí×ª·¢¹ýÈ¥
+#            - Path=/get/{segment} # ·ûºÏ/get/**µÄÂ·¾¶¶¼×ª·¢ ¼È×ª·¢µ½http://httpbin.org/get/xxx ËùÒÔ404
+            - Query=name # ÇëÇó±ØÐëÐ¯´øname²ÎÊý ·ñÔò²»×ª·¢ 404
+            - Query=name,java.* # ÇëÇó±ØÐëÐ¯´øname²ÎÊý,ÇÒÖµ±ØÐëÊÇjava¿ªÊ¼·ñÔò²»×ª·¢ 404
+#            - After=... ÄÄ¸öÊ±¼äÖ®ºó¿ÉÒÔµ÷ÓÃ Before= ...
+      default-filters: # È«¾Ö¹ýÂË
+        - StripPrefix=1 # È¥µôÇëÇóÇ°×º1¸ö ½â¾öÇ°ºó¶Ë·ÖÀëµÄurlÇ°×ºÎÊÌâ
   #      discovery:
 #        locator:
-#          enabled: true # ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½false ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½routesï¿½Ðµï¿½Ó³ï¿½ï¿½Ê§Ð§
-#          # ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·Òªï¿½ï¿½Ð´!!
+#          enabled: true # ¿ªÆô×Ô¶¯´úÀí Ä¬ÈÏfalse ²»´úÀíÆäËû·þÎñ ¿ªÆôºó ÈçÉÏroutesÖÐµÄÓ³ÉäÊ§Ð§
+#          # ´úÀíºóµÄ·þÎñÃûµØÖ·Òª´óÐ´!!
   application:
     name: gateway
 #  profiles:

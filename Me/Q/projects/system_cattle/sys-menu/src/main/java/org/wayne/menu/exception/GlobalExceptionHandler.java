@@ -16,12 +16,12 @@ import java.sql.SQLIntegrityConstraintViolationException;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(SQLException.class)
-    public RespBean SQLException(SQLException e){
+    public RespBeanQ SQLException(SQLException e){
         if (e instanceof SQLIntegrityConstraintViolationException) {
-            return RespBean.error("该数据有外键关联,无法删除,操作失败!");
+            return RespBeanQ.error("该数据有外键关联,无法删除,操作失败!");
         }
         // 可以继续判断添加详细的异常捕捉
 
-        return RespBean.error("数据库异常,操作失败!");
+        return RespBeanQ.error("数据库异常,操作失败!");
     }
 }
