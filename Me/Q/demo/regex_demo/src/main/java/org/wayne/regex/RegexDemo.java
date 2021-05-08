@@ -42,7 +42,7 @@ public class RegexDemo {
         if (list.get(0).equals(list.get(1))) {
             System.out.println("日期为同一天, 进行日期格式转化");
             final String s = content.replaceFirst(pattern, list.get(0) + " 00:00:00");
-            final String s2 = s.replace("'" + list.get(1) + "'", list.get(1) + "23:59:59");;
+            final String s2 = s.replace("'" + list.get(1) + "'", "'"+list.get(1) + " 23:59:59'");;
             System.out.println(s2);
         }
     }
