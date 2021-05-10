@@ -1,7 +1,7 @@
-package creator.p1;
+package creator.p1.entity;
 
 /**
- * @Description:
+ * @Description: 模拟接口的实现类1
  * @author: LinWeiQi
  */
 public class WaringMessage implements Message {
@@ -11,7 +11,7 @@ public class WaringMessage implements Message {
     }
 
     @Override
-    public void m2() {
+    public void buildContent() {
 
     }
 }

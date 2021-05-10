@@ -1,7 +1,7 @@
-package creator.p1;
+package creator.p1.entity;
 
 /**
- * @Description:
+ * @Description: 模拟接口的实现类2
  * @author: LinWeiQi
  */
 public class NoticeMessage implements Message {
@@ -11,7 +11,7 @@ public class NoticeMessage implements Message {
     }
 
     @Override
-    public void m2() {
+    public void buildContent() {
         init();
     }
 }
