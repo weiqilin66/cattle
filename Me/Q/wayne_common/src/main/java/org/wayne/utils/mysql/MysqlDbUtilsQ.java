@@ -1,0 +1,120 @@
+package org.wayne.utils.mysql;
+
+import com.alibaba.druid.pool.DruidDataSource;
+import org.apache.shardingsphere.sharding.api.config.ShardingRuleConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * @TODO: 多数据源工具类
+ * @author: lwq
+ */
+public class MysqlDbUtilsQ {
+    private static final Logger log = LoggerFactory.getLogger(MysqlDbUtilsQ.class);
+    public static Map<Object, Object> dbSource = new HashMap();
+    public static ConcurrentHashMap<String, JdbcTemplate> jdbcTemplateMap = new ConcurrentHashMap();
+
+    public MysqlDbUtilsQ() {
+    }
+
+    public static void initDb(String url, String password, String userName, String dbId, int maxActive, long maxWait, int minIdle) {
+        if (!dbSource.containsKey(dbId)) {
+            DruidDataSource druidDataSource = buildDb(url, password, userName);
+            dbSource.put(dbId, druidDataSource);
+        }
+
+    }
+
+    public static void initDb(String url, String password, String userName, String dbId) {
+        if (!dbSource.containsKey(dbId)) {
+            DruidDataSource druidDataSource = buildDb(url, password, userName);
+            dbSource.put(dbId, druidDataSource);
+        }
+
+    }
+
+    public static void addDb(String dbId, DataSource dataSource) {
+        if (!dbSource.containsKey(dbId)) {
+            dbSource.put(dbId, dataSource);
+        }
+
+    }
+
+    public static JdbcTemplate getTemplate(String dbId) {
+        if (!jdbcTemplateMap.contains(dbId)) {
+            if (dbId.indexOf("&") > -1) {
+                String[] dbArr = dbId.split("&");
+                boolean hasDbArr = true;
+                Map<String, DataSource> conactDb = new HashMap();
+                String[] var7 = dbArr;
+                int var6 = dbArr.length;
+
+                for (int var5 = 0; var5 < var6; ++var5) {
+                    String dbArrId = var7[var5];
+                    if (!dbSource.containsKey(dbArrId)) {
+                        hasDbArr = false;
+                        break;
+                    }
+
+                    conactDb.put(dbArrId, (DataSource) dbSource.get(dbArrId));
+                }
+
+                if (!hasDbArr) {
+                    log.error("获取联合数据源配置失败，请检查配置信息表[cis_db_config]，dbId【" + dbId + "】");
+                    return null;
+                }
+
+                DataSource dataSource;
+                try {
+                    TableRuleConfiguration tableRuleConfiguration = new TableRuleConfiguration("sys_parametes");
+                    ShardingRuleConfiguration shardingRuleConfiguration = new ShardingRuleConfiguration();
+                    shardingRuleConfiguration.getTableRuleConfigs().add(tableRuleConfiguration);
+                    dataSource = ShardingDataSourceFactory.createDataSource(conactDb, shardingRuleConfiguration, new Properties());
+                } catch (SQLException var8) {
+                    log.error("获取联合数据源配置失败，dbId【" + dbId + "】", var8);
+                    return null;
+                }
+
+                JdbcTemplate JdbcTemplate = new JdbcTemplate();
+                JdbcTemplate.setDataSource(dataSource);
+                jdbcTemplateMap.put(dbId, JdbcTemplate);
+            } else {
+                JdbcTemplate JdbcTemplate = new JdbcTemplate();
+                JdbcTemplate.setDataSource((DruidDataSource) dbSource.get(dbId));
+                jdbcTemplateMap.put(dbId, JdbcTemplate);
+            }
+        }
+
+        return (JdbcTemplate) jdbcTemplateMap.get(dbId);
+    }
+
+    private static DruidDataSource buildDb(String url, String password, String userName, int maxActive, long maxWait, int minIdle) {
+        DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setUrl(url);
+        druidDataSource.setPassword(password);
+        druidDataSource.setUsername(userName);
+        druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        druidDataSource.setMaxActive(maxActive);
+        druidDataSource.setMaxWait(maxWait);
+        druidDataSource.setMinIdle(minIdle);
+        return druidDataSource;
+    }
+
+    private static DruidDataSource buildDb(String url, String password, String userName) {
+        DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setUrl(url);
+        druidDataSource.setPassword(password);
+        druidDataSource.setUsername(userName);
+        druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        return druidDataSource;
+    }
+
+}

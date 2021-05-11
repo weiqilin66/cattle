@@ -18,6 +18,7 @@ public class RespBeanQ {
 
     public RespBeanQ(int status, String message, Object obj) {
         this.status = status;
+
         this.message = message;
         this.data = obj;
     }
