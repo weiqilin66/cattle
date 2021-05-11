@@ -1,16 +1,13 @@
 package org.wayne.utils.mysql;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.apache.shardingsphere.sharding.api.config.ShardingRuleConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -73,16 +70,12 @@ public class MysqlDbUtilsQ {
                 }
 
                 DataSource dataSource;
-                try {
-                    TableRuleConfiguration tableRuleConfiguration = new TableRuleConfiguration("sys_parametes");
-                    ShardingRuleConfiguration shardingRuleConfiguration = new ShardingRuleConfiguration();
-                    shardingRuleConfiguration.getTableRuleConfigs().add(tableRuleConfiguration);
-                    dataSource = ShardingDataSourceFactory.createDataSource(conactDb, shardingRuleConfiguration, new Properties());
-                } catch (SQLException var8) {
-                    log.error("获取联合数据源配置失败，dbId【" + dbId + "】", var8);
-                    return null;
-                }
-
+                // 占时只走else单个数据库,不做分库分表
+//                    TableRuleConfiguration tableRuleConfiguration = new TableRuleConfiguration("sys_parametes");
+//                    ShardingRuleConfiguration shardingRuleConfiguration = new ShardingRuleConfiguration();
+//                    shardingRuleConfiguration.getTableRuleConfigs().add(tableRuleConfiguration);
+//                    dataSource = ShardingDataSourceFactory.createDataSource(conactDb, shardingRuleConfiguration, new Properties());
+                dataSource=(DataSource)dbSource.get("");
                 JdbcTemplate JdbcTemplate = new JdbcTemplate();
                 JdbcTemplate.setDataSource(dataSource);
                 jdbcTemplateMap.put(dbId, JdbcTemplate);
