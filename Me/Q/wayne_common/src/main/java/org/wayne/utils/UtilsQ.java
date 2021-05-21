@@ -8,6 +8,7 @@ import java.util.*;
 /**
  * @author: lwq
  */
+@Deprecated
 public class UtilsQ {
     final static SimpleDateFormat YYYY_MM_DD_FORMAT;
     final static SimpleDateFormat MM_DD_FORMAT;

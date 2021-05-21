@@ -1,4 +1,4 @@
-package org.wayne.utils.mysql;
+package org.wayne.utils.db;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.slf4j.Logger;
@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @TODO: 多数据源工具类
+ * @TODO: 多数据源表配置设计
  * @author: lwq
  */
 public class MysqlDbUtilsQ {

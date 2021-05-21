@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="initBusDbService" class="org.wayne.utils.mysql.InitPubDbService" init-method="init">
+    <bean id="initBusDbService" class="org.wayne.utils.db.InitPubDbService" init-method="init">
         <property name="dbId" value="pub"></property>
         <property name="url" value="#{ddpEnviroment.getConfigManager().getAppConfig('app/datasource/pub_jdbc','url')}"/>
         <property name="username" value="#{ddpEnviroment.getConfigManager().getAppConfig('app/datasource/pub_jdbc','username')}"/>

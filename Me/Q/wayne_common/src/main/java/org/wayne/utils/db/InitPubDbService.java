@@ -1,4 +1,4 @@
-package org.wayne.utils.mysql;
+package org.wayne.utils.db;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.ObjectUtils;
