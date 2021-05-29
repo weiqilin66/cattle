@@ -4,10 +4,6 @@
     <modelVersion>4.0.0</modelVersion><!--pom的模型规范版本-->
     <packaging>pom</packaging><!--父模块打包类型必须为pom-->
 
-    <modules>
-        <module>eureka</module>
-    </modules>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
