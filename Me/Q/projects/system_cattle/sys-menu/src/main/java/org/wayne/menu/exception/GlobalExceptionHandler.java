@@ -2,7 +2,7 @@ package org.wayne.menu.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.wayne.commons.entity.RespBean;
+import org.wayne.entity.RespBeanQ;
 
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
