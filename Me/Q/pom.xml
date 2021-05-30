@@ -6,6 +6,7 @@
     <modules>
         <module>run_test</module>
         <module>demo/mybatis_plus_demo</module>
+        <module>automation-projects</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
