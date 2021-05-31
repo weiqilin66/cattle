@@ -7,7 +7,9 @@ import java.util.List;
  * @author: lwq
  */
 public class RedisService {
-    // java redis list只能存储list<String> , 存储List<T> 将T 转换成String
+    /**
+     *     java redis list只能存储list<String> , 存储List<T> 将T 转换成String
+     */
     /*
     List<HashMap<String, String>> sqls;
     ObjectMapper mapper = new ObjectMapper();
