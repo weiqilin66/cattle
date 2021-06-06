@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author LinWeiQi
@@ -61,7 +61,7 @@ public class Employee {
                 '}';
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private Date birthday;
 
     private String idCard;
@@ -94,7 +94,7 @@ public class Employee {
 
     private String school;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private Date beginDate;
 
     private String workState;
@@ -103,15 +103,15 @@ public class Employee {
 
     private Double contractTerm;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private Date conversionTime;
     @JsonIgnore
     private Date notWorkDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private Date beginContract;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private Date endContract;
     private Integer workAge;
     private Nation nation;
@@ -128,6 +128,7 @@ public class Employee {
     public void setSalary(Salary salary) {
         this.salary = salary;
     }
+
     public Nation getNation() {
         return nation;
     }

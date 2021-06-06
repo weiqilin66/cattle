@@ -42,11 +42,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     SecurityMetadataSourceFilter securityMetadataSourceFilter;
     @Autowired
     CustomUrlDecisionManager customUrlDecisionManager;
+
     //密码策略
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     // 用户策略->数据库
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -95,15 +97,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         resp.setContentType("application/json;charset=utf-8");
                         PrintWriter out = resp.getWriter();
                         RespBeanQ error = RespBeanQ.error("登录失败");
-                        if (e instanceof LockedException){
+                        if (e instanceof LockedException) {
                             error.setMessage("账户被锁定,请联系管理员");
-                        }else if (e instanceof CredentialsExpiredException){
+                        } else if (e instanceof CredentialsExpiredException) {
                             error.setMessage("密码过期,请联系管理员");
-                        }else if (e instanceof AccountExpiredException){
+                        } else if (e instanceof AccountExpiredException) {
                             error.setMessage("账户过期,请联系管理员");
-                        }else if (e instanceof DisabledException){
+                        } else if (e instanceof DisabledException) {
                             error.setMessage("账户被禁用,请联系管理员");
-                        }else if (e instanceof BadCredentialsException){
+                        } else if (e instanceof BadCredentialsException) {
                             error.setMessage("用户名或密码错误,请重新输入");
                         }
 
@@ -150,6 +152,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 });
     }
+
     // SecurityMetadataSourceFilter会拦截所有请求除了/doLogin 第一次拦截完会跳转到/login,login会被拦截,之后又跳转到/login死循环
     @Override
     public void configure(WebSecurity web) throws Exception {

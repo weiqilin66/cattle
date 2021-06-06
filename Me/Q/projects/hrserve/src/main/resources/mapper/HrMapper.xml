@@ -23,7 +23,7 @@
     </resultMap>
     <select id="getAllHrs" resultMap="Map2">
 
-    SELECT
+        SELECT
         hr.id as hrId,
         hr.name as hrName ,
         hr.phone ,
@@ -33,8 +33,8 @@
         role.id as rId,
         role.name as rName,
         role.nameZh
-    from hr left join hr_role on hr.id = hr_role.hrid
-    left join role on role.id = hr_role.rid
-    where hrId != #{id}
+        from hr left join hr_role on hr.id = hr_role.hrid
+        left join role on role.id = hr_role.rid
+        where hrId != #{id}
     </select>
 </mapper>

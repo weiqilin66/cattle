@@ -37,8 +37,8 @@ public class InitPubDbService {
         List<Map<String, Object>> list = jdbcTemplate.queryForList("select dbId,url,password,username from cis_db_config");
         Iterator var4 = list.iterator();
 
-        while(var4.hasNext()) {
-            Map<String, Object> dbMap = (Map)var4.next();
+        while (var4.hasNext()) {
+            Map<String, Object> dbMap = (Map) var4.next();
             String db_url = String.valueOf(dbMap.get("url"));
             String db_username = String.valueOf(dbMap.get("username"));
             String db_password = String.valueOf(dbMap.get("password"));

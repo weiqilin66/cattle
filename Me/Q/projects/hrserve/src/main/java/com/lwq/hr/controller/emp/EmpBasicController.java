@@ -96,8 +96,8 @@ public class EmpBasicController {
         // ------------------------插入数据库---------------------------
         Integer res = employeeMapper.addEmps(employeeList);
 
-        if (res==employeeList.size()) {
-            return RespBeanQ.ok("成功上传"+res+"条数据");
+        if (res == employeeList.size()) {
+            return RespBeanQ.ok("成功上传" + res + "条数据");
         }
         return RespBeanQ.error("上传失败");
     }

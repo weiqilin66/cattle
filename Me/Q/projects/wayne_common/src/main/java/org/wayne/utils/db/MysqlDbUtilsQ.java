@@ -75,7 +75,7 @@ public class MysqlDbUtilsQ {
 //                    ShardingRuleConfiguration shardingRuleConfiguration = new ShardingRuleConfiguration();
 //                    shardingRuleConfiguration.getTableRuleConfigs().add(tableRuleConfiguration);
 //                    dataSource = ShardingDataSourceFactory.createDataSource(conactDb, shardingRuleConfiguration, new Properties());
-                dataSource=(DataSource)dbSource.get("");
+                dataSource = (DataSource) dbSource.get("");
                 JdbcTemplate JdbcTemplate = new JdbcTemplate();
                 JdbcTemplate.setDataSource(dataSource);
                 jdbcTemplateMap.put(dbId, JdbcTemplate);

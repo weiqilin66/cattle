@@ -9,15 +9,15 @@ import java.util.List;
 
 /**
  * <p>
+ *
+ * @author LinWeiQi
  * @TableId：表主键标识
- * @TableField：表字段标识 (当表字段没使用_时且包含2个以上单词,sql生成时不注解会解析成带_字段 所以要标识来不反转驼峰)
+ * @TableField：表字段标识 (当表字段没使用_时且包含2个以上单词, sql生成时不注解会解析成带_字段 所以要标识来不反转驼峰)
  * @TableField(exist = false)：表示该属性不为数据库表字段，使用默认方法必须指定。
  * @Accessors(chain = true): setter生成方法的返回值是对象
  * // 生成的setter方法如下，方法体略
- *     public User setId(Long id) {}
+ * public User setId(Long id) {}
  * </p>
- *
- * @author LinWeiQi
  * @since 2020-01-28
  */
 public class Menu implements Serializable {

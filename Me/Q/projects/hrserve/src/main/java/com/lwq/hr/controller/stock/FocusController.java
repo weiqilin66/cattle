@@ -26,20 +26,22 @@ public class FocusController {
     }
 
     @PutMapping("/")
-    public RespBeanQ update(@RequestBody MyFocus myFocus){
+    public RespBeanQ update(@RequestBody MyFocus myFocus) {
 
         int res = myFocusMapper.updateById(myFocus);
 
-        return res==1?RespBeanQ.ok():RespBeanQ.error();
+        return res == 1 ? RespBeanQ.ok() : RespBeanQ.error();
     }
+
     @PostMapping("/")
-    public RespBeanQ add(@RequestBody MyFocus myFocus){
+    public RespBeanQ add(@RequestBody MyFocus myFocus) {
         int res = myFocusMapper.insert(myFocus);
-        return res==1?RespBeanQ.ok():RespBeanQ.error();
+        return res == 1 ? RespBeanQ.ok() : RespBeanQ.error();
     }
+
     @DeleteMapping("/{id}")
-    public RespBeanQ del(@PathVariable int id){
+    public RespBeanQ del(@PathVariable int id) {
         int res = myFocusMapper.deleteById(id);
-        return res==1?RespBeanQ.ok():RespBeanQ.error();
+        return res == 1 ? RespBeanQ.ok() : RespBeanQ.error();
     }
 }

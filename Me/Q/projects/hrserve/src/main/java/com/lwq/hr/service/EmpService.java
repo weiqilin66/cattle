@@ -19,19 +19,19 @@ public class EmpService {
     EmployeeMapper employeeMapper;
 
     // 分页查询
-    public RespPageBeanQ getByPage(int page,int size,String keyWord,int id){
+    public RespPageBeanQ getByPage(int page, int size, String keyWord, int id) {
         RespPageBeanQ respPageBean = new RespPageBeanQ();
-        if (page!=0 && size!=0) {
-            page = (page-1)*size;
+        if (page != 0 && size != 0) {
+            page = (page - 1) * size;
         }
-        long total = employeeMapper.getTotal(null,null);
+        long total = employeeMapper.getTotal(null, null);
         respPageBean.setTotal(total);
         Employee employee = new Employee();
         employee.setName(keyWord);
-        if(id != -1){
+        if (id != -1) {
             employee.setId(id);
         }
-        List<Employee> list = employeeMapper.getEmployeeByPage(page, size,employee,null);
+        List<Employee> list = employeeMapper.getEmployeeByPage(page, size, employee, null);
         respPageBean.setData(list);
         return respPageBean;
     }

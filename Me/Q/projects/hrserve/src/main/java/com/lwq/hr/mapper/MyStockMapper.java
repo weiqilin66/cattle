@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author LinWeiQi
@@ -27,6 +27,7 @@ public interface MyStockMapper extends BaseMapper<MyStock> {
 
     @Select("select title from goods where shop = '宁波老猎人电玩店' and title like concat('%',#{title},'%') group by title")
     List<String> getTitles(String kw);
+
     @Select("select count(*) from my_stock a left join goods b on a.title = b.title and b.shop = '宁波老猎人电玩店' and etl_date=#{now} ")
     long getTotal(String now);
 }

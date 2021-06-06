@@ -30,6 +30,7 @@ public class BeanUtilsQ implements ApplicationContextAware {
             BeanUtilsQ.applicationContext = applicationContext;
         }
     }
+
     public static Object getBean(String name) {
         return getApplicationContext().getBean(name);
     }

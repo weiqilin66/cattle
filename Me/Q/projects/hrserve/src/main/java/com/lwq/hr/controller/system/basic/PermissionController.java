@@ -24,6 +24,7 @@ public class PermissionController {
     RoleMapper roleMapper;
     @Resource
     MenuRoleMapper menuRoleMapper;
+
     @GetMapping("/")
     public List<Role> getPermissions() {
         return roleMapper.getRoles();
@@ -45,27 +46,28 @@ public class PermissionController {
     // 修改根据前端获取的所有子树节点 删除rid所属mid 在插入选中的
     @PutMapping("/")
     @Transactional
-    public RespBeanQ updateByDelAndIns(int rid, int[] mids){
+    public RespBeanQ updateByDelAndIns(int rid, int[] mids) {
         HashMap<String, Object> columnMap = new HashMap<>();
-        columnMap.put("rid",rid);
+        columnMap.put("rid", rid);
         menuRoleMapper.deleteByMap(columnMap);
         // 批量插入
         if (mids == null) {
             return RespBeanQ.ok("更新成功");
         }
-        int res = menuRoleMapper.insertBatchId(mids,rid);
+        int res = menuRoleMapper.insertBatchId(mids, rid);
         if (res == mids.length) {
             return RespBeanQ.ok("更新成功");
         }
-        return  RespBeanQ.error();
+        return RespBeanQ.error();
     }
+
     @PostMapping("/")
-    public RespBeanQ addRoles(@RequestBody Role role){
+    public RespBeanQ addRoles(@RequestBody Role role) {
         if (!role.getName().startsWith("ROLE_")) {
-            role.setName("ROLE_"+role.getName());
+            role.setName("ROLE_" + role.getName());
         }
         int res = roleMapper.insert(role);
-        if (res!=1) {
+        if (res != 1) {
             return RespBeanQ.error();
         }
         return RespBeanQ.ok("添加成功");
@@ -73,15 +75,15 @@ public class PermissionController {
 
     @DeleteMapping("/{rid}")
     @Transactional
-    public RespBeanQ del(@PathVariable int rid){
+    public RespBeanQ del(@PathVariable int rid) {
 
         int res = roleMapper.deleteById(rid);
 
-        if (res!=1) {
+        if (res != 1) {
             return RespBeanQ.error("删除失败");
         }
         HashMap<String, Object> columnMap = new HashMap<>();
-        columnMap.put("rid",rid);
+        columnMap.put("rid", rid);
         menuRoleMapper.deleteByMap(columnMap);
 
         return RespBeanQ.ok("删除成功!");

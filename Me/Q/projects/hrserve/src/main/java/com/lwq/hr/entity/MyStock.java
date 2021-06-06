@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author LinWeiQi
@@ -35,7 +35,6 @@ public class MyStock implements Serializable {
     private String label;
 
     private String kw;
-
 
 
 }

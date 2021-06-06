@@ -12,8 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @Description:
- * 数据清理
+ * @Description: 数据清理
  * 根据宝贝分类查出价格最高和价格最低 综合分析出自己商品价格
  * 定位可信任(销量)店铺 价格差 做转卖
  * 分析价格走势
@@ -27,7 +26,7 @@ public class TableController {
     GoodsMapper goodsMapper;
 
     @GetMapping("/")
-    public RespPageBeanQ getTableData(){
+    public RespPageBeanQ getTableData() {
         RespPageBeanQ RespPageBeanQ = new RespPageBeanQ();
         long total = goodsMapper.selectAll();
         RespPageBeanQ.setTotal(total);

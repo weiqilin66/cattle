@@ -10,9 +10,10 @@ public class RespBeanQ {
     private String message;
     private Object data;
 
-    public static RespBeanQ build(){
+    public static RespBeanQ build() {
         return new RespBeanQ();
     }
+
     public RespBeanQ() {
     }
 
@@ -21,18 +22,23 @@ public class RespBeanQ {
         this.message = message;
         this.data = obj;
     }
+
     public static RespBeanQ ok(String msg) {
         return new RespBeanQ(200, msg, null);
     }
+
     public static RespBeanQ ok() {
         return new RespBeanQ(200, null, null);
     }
+
     public static RespBeanQ ok(Object o) {
         return new RespBeanQ(200, null, o);
     }
+
     public static RespBeanQ error() {
         return new RespBeanQ(500, null, null);
     }
+
     public static RespBeanQ ok(String msg, Object o) {
         return new RespBeanQ(200, msg, o);
     }

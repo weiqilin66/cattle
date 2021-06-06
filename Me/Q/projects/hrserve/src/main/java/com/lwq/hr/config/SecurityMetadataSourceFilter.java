@@ -25,18 +25,19 @@ public class SecurityMetadataSourceFilter implements FilterInvocationSecurityMet
     @Resource
     MenuService menuService;
     AntPathMatcher antPathMatcher = new AntPathMatcher();
+
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
         // 请求的路径
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
         List<Menu> menus = menuService.getMenuWithRoles();
         for (Menu menu : menus) {
-            if (antPathMatcher.match(menu.getUrl(),requestUrl)) {// 如果匹配上menu中的路径,该路径是需要权限的
+            if (antPathMatcher.match(menu.getUrl(), requestUrl)) {// 如果匹配上menu中的路径,该路径是需要权限的
                 // 获取该权限的roles
                 List<Role> roles = menu.getRoles();
                 String[] roleNames = new String[roles.size()];
                 for (int i = 0; i < roles.size(); i++) {
-                    roleNames[i]=roles.get(i).getName();
+                    roleNames[i] = roles.get(i).getName();
                 }
                 return SecurityConfig.createList(roleNames);
             }
@@ -49,6 +50,7 @@ public class SecurityMetadataSourceFilter implements FilterInvocationSecurityMet
     public Collection<ConfigAttribute> getAllConfigAttributes() {
         return null;
     }
+
     // 返回true
     @Override
     public boolean supports(Class<?> aClass) {

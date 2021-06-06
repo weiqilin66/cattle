@@ -52,7 +52,7 @@
         AND title like concat('%',#{goodName},'%')
         and etl_date = #{now}
         and shop not in
-        <foreach collection="list" item="blackShop" separator="," close=")" open="(" >
+        <foreach collection="list" item="blackShop" separator="," close=")" open="(">
             #{blackShop.name}
         </foreach>
     </select>
@@ -92,23 +92,23 @@
     </select>
     <!--指定必回收的店铺-->
     <select id="getMax" resultMap="BaseResultMap">
-        select * from goods  a
+        select * from goods a
         inner join(
-            select max(price) as price from goods where title like concat('%',#{goodName},'%') and etl_date = #{now}
-            and shop in
-            <foreach collection="list" item="secondShop" separator="," close=")" open="(" >
-                #{secondShop.name}
-            </foreach>
+        select max(price) as price from goods where title like concat('%',#{goodName},'%') and etl_date = #{now}
+        and shop in
+        <foreach collection="list" item="secondShop" separator="," close=")" open="(">
+            #{secondShop.name}
+        </foreach>
 
-            <if test="condition!=''">
-                AND locate(#{condition},title) = 0
-            </if>
+        <if test="condition!=''">
+            AND locate(#{condition},title) = 0
+        </if>
         )b
         on a.price = b.price
         where 1=1
         and a.etl_date = #{now}
         and shop in
-        <foreach collection="list" item="secondShop" separator="," close=")" open="(" >
+        <foreach collection="list" item="secondShop" separator="," close=")" open="(">
             #{secondShop.name}
         </foreach>
         and title like concat('%',#{goodName},'%')
@@ -123,7 +123,7 @@
         select * from goods where etl_date = #{date} limit 1
     </select>
     <select id="getMaxMinFromSHop" resultType="com.lwq.hr.entity.Goods">
-        select * from goods where shop = #{shop} and title  like concat('%',#{goodName},'%')
+        select * from goods where shop = #{shop} and title like concat('%',#{goodName},'%')
         <if test="condition!=''">
             AND locate(#{condition},title) = 0
         </if>

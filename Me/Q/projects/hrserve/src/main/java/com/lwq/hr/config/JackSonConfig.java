@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @Description: 修改配置springboot自动配置的jackSon !!使用此配置后所有的JSON转换都会进过这里,如果date无法被转换例如null会报错
- * @JsonIgnore  转出json或者接受json时候忽略这个字段     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")来自定义更灵活
+ * @JsonIgnore 转出json或者接受json时候忽略这个字段     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")来自定义更灵活
  * 也可以在前端控制返回的日期格式   value-format="yyyy-MM-dd"
  * @exception net.sf.jsqlparser.expression.CastExpression
  * @author: LinWeiQi

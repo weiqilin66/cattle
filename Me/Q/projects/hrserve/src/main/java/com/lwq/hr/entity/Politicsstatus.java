@@ -11,7 +11,7 @@ import java.util.Objects;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author LinWeiQi

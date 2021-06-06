@@ -12,14 +12,14 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 /**
- * @Description: 根据SecurityMetadataSourceFilter返回的角色,判断当前用户是否有权限
+ * @Description: 根据SecurityMetadataSourceFilter返回的角色, 判断当前用户是否有权限
  * @author: LinWeiQi
  */
 @Component
 public class CustomUrlDecisionManager implements AccessDecisionManager {
     /**
-     * @param  [ Authentication:存储登录信息  Collection<ConfigAttribute>:MyFilter返回的collection]
-     * @date   2020/1/31
+     * @param [ Authentication:存储登录信息  Collection<ConfigAttribute>:MyFilter返回的collection]
+     * @date 2020/1/31
      */
     @Override
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> collection) throws AccessDeniedException, InsufficientAuthenticationException {
@@ -30,7 +30,7 @@ public class CustomUrlDecisionManager implements AccessDecisionManager {
                 // 未登录
                 if (authentication instanceof AnonymousAuthenticationToken) {
                     throw new AccessDeniedException("请先登录");
-                }else {
+                } else {
                     // 已登录且菜单所需角色是LOGIN
                     return;
                 }

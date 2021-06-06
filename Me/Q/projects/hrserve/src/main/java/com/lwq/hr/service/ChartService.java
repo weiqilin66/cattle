@@ -275,18 +275,18 @@ public class ChartService {
                 condition = cd[1];
                 goodName = arr[0] + "%" + arr[1] + "%" + cd[0];
             }
-            List<Goods> maxList = goodsMapper.getMaxMinFromSHop(maxShop,goodName,condition);
-            List<Goods> minList = goodsMapper.getMaxMinFromSHop(minShop,goodName,condition);
-            if (maxList!=null && minList!=null && !maxList.isEmpty() && !minList.isEmpty()) {
+            List<Goods> maxList = goodsMapper.getMaxMinFromSHop(maxShop, goodName, condition);
+            List<Goods> minList = goodsMapper.getMaxMinFromSHop(minShop, goodName, condition);
+            if (maxList != null && minList != null && !maxList.isEmpty() && !minList.isEmpty()) {
                 //差价大于10
                 float mp = maxList.get(0).getPrice();
                 float np = minList.get(0).getPrice();
-                float diff = mp-np;
-                Map<String,Object> res = new HashMap<>();
-                if (diff>=10) {
-                    res.put("max",maxList.get(0));
-                    res.put("min",minList.get(0));
-                    res.put("diff",diff);
+                float diff = mp - np;
+                Map<String, Object> res = new HashMap<>();
+                if (diff >= 10) {
+                    res.put("max", maxList.get(0));
+                    res.put("min", minList.get(0));
+                    res.put("diff", diff);
                     resList.add(res);
                 }
             }
@@ -294,7 +294,7 @@ public class ChartService {
         Collections.sort(resList, new Comparator<Map<String, Object>>() {
             @Override
             public int compare(Map<String, Object> o1, Map<String, Object> o2) {
-                return (int) ((float)o2.get("diff")-(float)o1.get("diff"));
+                return (int) ((float) o2.get("diff") - (float) o1.get("diff"));
             }
         });
         return resList;

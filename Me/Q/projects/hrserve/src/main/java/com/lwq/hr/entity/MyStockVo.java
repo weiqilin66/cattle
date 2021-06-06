@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author LinWeiQi
@@ -38,7 +38,6 @@ public class MyStockVo implements Serializable {
 
     private float price2;
     private float diff;
-
 
 
 }

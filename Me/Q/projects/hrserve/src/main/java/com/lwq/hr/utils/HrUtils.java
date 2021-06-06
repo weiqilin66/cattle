@@ -9,10 +9,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
  */
 public class HrUtils {
     /**
-     * @TODO    获取当前登录的用户
-     * @date   2020/2/13
+     * @TODO 获取当前登录的用户
+     * @date 2020/2/13
      */
-    public static Hr getCurrentHr(){
+    public static Hr getCurrentHr() {
         return ((Hr) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 }

@@ -5,7 +5,7 @@ import org.wayne.menu.entity.HrRole;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author LinWeiQi

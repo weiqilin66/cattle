@@ -16,7 +16,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class MenuServiceApp {
     public static void main(String[] args) {
 
-        SpringApplication.run(MenuServiceApp.class,args);
+        SpringApplication.run(MenuServiceApp.class, args);
     }
 
 }

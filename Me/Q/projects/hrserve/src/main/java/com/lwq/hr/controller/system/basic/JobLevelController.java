@@ -24,18 +24,18 @@ public class JobLevelController {
     com.lwq.hr.mapper.joblevelMapper joblevelMapper;
 
     @GetMapping("/")
-    public List<Joblevel> getJobLevel(){
+    public List<Joblevel> getJobLevel() {
 
         return joblevelMapper.selectAll();
     }
 
     @PostMapping("/")
     @Transactional
-    public RespBeanQ addJobLevel(@RequestBody Joblevel jl){
+    public RespBeanQ addJobLevel(@RequestBody Joblevel jl) {
         jl.setCreateDate(new Date());
         jl.setEnabled(true);
         int res = joblevelMapper.insert(jl);
-        if (res!=1) {
+        if (res != 1) {
             return RespBeanQ.error("添加失败");
         }
         return RespBeanQ.ok("添加成功");
@@ -43,26 +43,27 @@ public class JobLevelController {
 
     @PutMapping("/")
     @Transactional
-    public RespBeanQ updateJobLevel(@RequestBody Joblevel jl){
+    public RespBeanQ updateJobLevel(@RequestBody Joblevel jl) {
         int res = joblevelMapper.updateById(jl);
-        if (res!=1) {
+        if (res != 1) {
             return RespBeanQ.error("修改失败");
         }
         return RespBeanQ.ok("修改成功");
     }
-    
+
     @DeleteMapping("/{id}")
     @Transactional
-    public RespBeanQ deleteById(@PathVariable int id){
+    public RespBeanQ deleteById(@PathVariable int id) {
         int res = joblevelMapper.deleteById(id);
-        if (res!=1) {
+        if (res != 1) {
             return RespBeanQ.error("删除失败");
 
         }
         return RespBeanQ.ok("删除成功");
     }
+
     @DeleteMapping("/")
-    public RespBeanQ batchDelById(@Param("ids") int[] ids){
+    public RespBeanQ batchDelById(@Param("ids") int[] ids) {
         ArrayList<Serializable> idList = new ArrayList<>();
 
         for (int i = 0; i < ids.length; i++) {

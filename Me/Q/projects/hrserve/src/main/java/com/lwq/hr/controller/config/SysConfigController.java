@@ -21,7 +21,7 @@ public class SysConfigController {
     MenuService menuService;
 
     @GetMapping("/menu")
-    public List<Menu> getMenuById(){
+    public List<Menu> getMenuById() {
         return menuService.getMenuById();
 
     }

@@ -5,8 +5,10 @@
     <bean id="initBusDbService" class="org.wayne.utils.db.InitPubDbService" init-method="init">
         <property name="dbId" value="pub"></property>
         <property name="url" value="#{ddpEnviroment.getConfigManager().getAppConfig('app/datasource/pub_jdbc','url')}"/>
-        <property name="username" value="#{ddpEnviroment.getConfigManager().getAppConfig('app/datasource/pub_jdbc','username')}"/>
-        <property name="password" value="#{ddpEnviroment.getConfigManager().getAppConfig('app/datasource/pub_jdbc','password')}"/>
+        <property name="username"
+                  value="#{ddpEnviroment.getConfigManager().getAppConfig('app/datasource/pub_jdbc','username')}"/>
+        <property name="password"
+                  value="#{ddpEnviroment.getConfigManager().getAppConfig('app/datasource/pub_jdbc','password')}"/>
 
     </bean>
 </beans>

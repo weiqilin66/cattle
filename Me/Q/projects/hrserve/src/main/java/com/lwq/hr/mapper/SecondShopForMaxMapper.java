@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author LinWeiQi
@@ -18,6 +18,7 @@ public interface SecondShopForMaxMapper extends BaseMapper<SecondShopForMax> {
 
     @Select("select * from second_shop_for_max where enabled = 1")
     List<SecondShopForMax> selectAll();
+
     // 折线图
     @Select("select * from second_shop_for_max")
     List<SecondShopForMax> selectAll2();

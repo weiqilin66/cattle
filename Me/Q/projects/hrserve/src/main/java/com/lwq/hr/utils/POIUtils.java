@@ -214,14 +214,13 @@ public class POIUtils {
 
     /**
      * Excel 解析成 员工数据集合
-     *
      */
     public static List<Employee> excel2Employee(MultipartFile file, List<Nation> allNations, List<Politicsstatus> allPoliticsstatus, List<Department> allDepartments, List<Position> allPositions, List<Joblevel> allJobLevels) {
         List<Employee> list = new ArrayList<>();
         Employee employee = null;
         try {
             //1. 创建一个 workbook 对象
-            Workbook workbook = PoiUtilsQ.myGetWorkbook(file.getInputStream(),file.getOriginalFilename());
+            Workbook workbook = PoiUtilsQ.myGetWorkbook(file.getInputStream(), file.getOriginalFilename());
             //2. 获取 workbook 中表单的数量
             int numberOfSheets = workbook.getNumberOfSheets();
             for (int i = 0; i < numberOfSheets; i++) {

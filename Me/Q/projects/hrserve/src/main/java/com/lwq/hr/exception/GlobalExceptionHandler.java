@@ -16,7 +16,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(SQLException.class)
-    public RespBeanQ SQLException(SQLException e){
+    public RespBeanQ SQLException(SQLException e) {
         if (e instanceof SQLIntegrityConstraintViolationException) {
             return RespBeanQ.error("该数据有外键关联,无法删除,操作失败!");
         }

@@ -44,16 +44,18 @@ public class ChartController {
 
 
     @GetMapping("/get2diff")
-    public RespBeanQ getMaxMinFromShop(String maxShop, String minShop){
+    public RespBeanQ getMaxMinFromShop(String maxShop, String minShop) {
 
-        return RespBeanQ.ok(chartService.get2diff(maxShop,minShop));
+        return RespBeanQ.ok(chartService.get2diff(maxShop, minShop));
     }
+
     //清除springcache缓存
     @RequestMapping("/remove")
-    @CacheEvict(cacheNames = "diff",allEntries = true)
-    public String remove(){
+    @CacheEvict(cacheNames = "diff", allEntries = true)
+    public String remove() {
         return "清除diff缓存完毕";
     }
+
     /**
      * @return lwq.returnbean.RespBeanQ
      * @TODO 根据差价再分析 最高价格两张以上的店铺作为坑的目标 / 取集合中对象某个字段相同的对象map.containsKey()
@@ -73,14 +75,14 @@ public class ChartController {
     private List<Map<String, Object>> getMaxMinToday() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         String now = dateFormat.format(new Date());
-        return chartService.getMaxMin(now,null);
+        return chartService.getMaxMin(now, null);
     }
 
     /**
      * 根据店铺名称二次加工数据
      */
     @GetMapping("/byShop")
-    public RespBeanQ byShop(String shopName){
+    public RespBeanQ byShop(String shopName) {
         List<Map<String, Object>> maxMin = getMaxMinToday();
         List<Map<String, Object>> resList = new ArrayList<>();
         for (Map<String, Object> map : maxMin) {
@@ -90,6 +92,7 @@ public class ChartController {
         }
         return RespBeanQ.build().setData(resList);
     }
+
     /**
      * @return 读取Excel获取宝贝关键字
      * @date 2020/5/13
@@ -138,7 +141,7 @@ public class ChartController {
 
         String finalTitle = title;
         String finalCondition = condition;
-        list.parallelStream().forEach(shop->{
+        list.parallelStream().forEach(shop -> {
             List<Goods> goods = goodsMapper.byTitle(shop, finalTitle, days, finalCondition);
             List<String> times = new ArrayList<>();//所有日期
             for (Goods good : goods) {
@@ -167,7 +170,7 @@ public class ChartController {
 
             resMap.put(shop, prices);
             // 最新一天的对象
-            if (goods.get(0).getPrice()!=0) {
+            if (goods.get(0).getPrice() != 0) {
                 resList.add(goods.get(0));
             }
         });
@@ -175,10 +178,10 @@ public class ChartController {
         Collections.sort(resList, new Comparator<Goods>() {
             @Override
             public int compare(Goods o1, Goods o2) {
-                return o2.getSales()-o1.getSales(); //降序
+                return o2.getSales() - o1.getSales(); //降序
             }
         });
-        resMap.put("objList",resList);
+        resMap.put("objList", resList);
         return resMap;
     }
 
@@ -196,10 +199,10 @@ public class ChartController {
             return RespBeanQ.error("今天还没爬取数据!");
         }
         List<Map<String, Object>> maxMin = null;
-        if ("".equals(shop) || shop==null) {
-            maxMin = chartService.getMaxMin(now,null);
-        }else {
-            maxMin = chartService.getMaxMin(now,shop);
+        if ("".equals(shop) || shop == null) {
+            maxMin = chartService.getMaxMin(now, null);
+        } else {
+            maxMin = chartService.getMaxMin(now, shop);
         }
         if (maxMin.get(0).get("error") != null) {
             return RespBeanQ.error(maxMin.get(0).get("error").toString());

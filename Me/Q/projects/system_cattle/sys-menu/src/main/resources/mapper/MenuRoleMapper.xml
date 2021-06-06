@@ -3,7 +3,7 @@
 <mapper namespace="org.wayne.menu.mapper.MenuRoleMapper">
 
     <insert id="insertBatchId">
-        insert into menu_role(mid, rid) values 
+        insert into menu_role(mid, rid) values
         <foreach collection="mids" item="mid" separator=",">
             (#{mid},#{rid})
         </foreach>

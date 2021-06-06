@@ -18,31 +18,31 @@ public class PathUtilsQ {
 
     public static void whereAmI() throws URISyntaxException {
 
-        System.out.println("java.home : "+System.getProperty("java.home"));
+        System.out.println("java.home : " + System.getProperty("java.home"));
 
-        System.out.println("java.class.version : "+System.getProperty("java.class.version"));
+        System.out.println("java.class.version : " + System.getProperty("java.class.version"));
 
-        System.out.println("java.class.path : "+System.getProperty("java.class.path"));
+        System.out.println("java.class.path : " + System.getProperty("java.class.path"));
 
-        System.out.println("java.library.path : "+System.getProperty("java.library.path"));
+        System.out.println("java.library.path : " + System.getProperty("java.library.path"));
 
-        System.out.println("java.io.tmpdir : "+System.getProperty("java.io.tmpdir"));
+        System.out.println("java.io.tmpdir : " + System.getProperty("java.io.tmpdir"));
 
-        System.out.println("java.compiler : "+System.getProperty("java.compiler"));
+        System.out.println("java.compiler : " + System.getProperty("java.compiler"));
 
-        System.out.println("java.ext.dirs : "+System.getProperty("java.ext.dirs"));
+        System.out.println("java.ext.dirs : " + System.getProperty("java.ext.dirs"));
 
-        System.out.println("user.name : "+System.getProperty("user.name"));
+        System.out.println("user.name : " + System.getProperty("user.name"));
 
-        System.out.println("user.home : "+System.getProperty("user.home"));
+        System.out.println("user.home : " + System.getProperty("user.home"));
 
-        System.out.println("user.dir : "+System.getProperty("user.dir"));
+        System.out.println("user.dir : " + System.getProperty("user.dir"));
 
-        System.out.println("当前类所在包路径package: "+PathUtilsQ.class.getPackage().getName());
+        System.out.println("当前类所在包路径package: " + PathUtilsQ.class.getPackage().getName());
 
         String packName = PathUtilsQ.class.getPackage().getName();
         URI packuri = new URI(packName);
-        System.out.println("当前类所在URI: "+packuri.getPath());
+        System.out.println("当前类所在URI: " + packuri.getPath());
 
         /**
          * 测试性能使用
@@ -50,7 +50,7 @@ public class PathUtilsQ {
         long startTime = System.nanoTime();//返回最准确的可用系统计时器的当前值，以毫微秒为单位。
         long endTime = System.nanoTime();
         long millis = TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
-        System.out.printf("串行排序花费时间：%d ms",millis);
+        System.out.printf("串行排序花费时间：%d ms", millis);
     }
 
 

@@ -19,7 +19,7 @@ public class MenuController {
     MenuService menuService;
 
     @GetMapping("/list")
-    public List<Menu> getMenuList(){
+    public List<Menu> getMenuList() {
         return menuService.getMenuById();
     }
 }
