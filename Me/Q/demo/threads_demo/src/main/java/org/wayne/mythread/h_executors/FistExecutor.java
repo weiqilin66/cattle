@@ -15,13 +15,18 @@ public class FistExecutor {
     ExecutorService pool = Executors.newFixedThreadPool(taskSize);
 
     public List<Future> t1() {
+        boolean flag =true;
         //创建多个有返回值的任务
         List<Future> list = new ArrayList<Future>();
         for (int i = 0; i < taskSize; i++) {
             Callable c = new Callable() {//Callable有返回值 Runnable无返回值
                 @Override
                 public Object call() throws Exception {
-                    return 1;
+                    if(flag){
+                        return "2";
+                    }else {
+                        return 1;
+                    }
                 }
             };
             //执行任务并获取Future对象
