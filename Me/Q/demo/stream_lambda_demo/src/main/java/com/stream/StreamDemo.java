@@ -53,6 +53,9 @@ import java.util.stream.Stream;
 public class StreamDemo {
 
     public static void main(String[] args) {
+        /**
+         * 所有Stream的操作必须以lambda表达式为参数;
+         */
         // 流操作的集合必须确定泛型类型，否则jvm无法通过上下文判断参数类型
         List<String> list = Arrays.asList("1","ab","aa");
         /**
@@ -86,6 +89,7 @@ public class StreamDemo {
         list2.stream().sorted().forEach(System.out::println);
         // 逆序
         list2.stream().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+
         // 特例方法引用 Comparator.comparing()
         List<Student> list3 = Arrays.asList(
                 new Student(1, "wayne", 29),
@@ -93,17 +97,22 @@ public class StreamDemo {
         );
         list3.stream().sorted(Comparator.comparing(Student::getAge)).forEach(System.out::println);
         list3.stream().sorted(Comparator.comparing(Student::getAge).reversed()).forEach(student -> System.out.println(student.getAge()));
-
         /**
          * 映射 流对象中的每一个元素映射为另一个元素，实现元素类型的转换
          */
         System.out.println("----------map---------------");
         List<String> list4 = Arrays.asList("CC","ab","aa");
-        list4.stream().map(String::toUpperCase).sorted((s, t1) -> t1.compareTo(s)).forEach(System.out::println);
+        list4.stream().map(String::toUpperCase).sorted(Comparator.reverseOrder()).forEach(System.out::println);
         System.out.println("- - - - - - ");
-        //自定义映射规则
-        Function<String,String> function = s -> {return  s + ".map3";};
+        // 自定义映射规则
+        Function<String,String> function = s -> s + ".map3";
         list4.stream().map(function).forEach(System.out::println);
+
+        // limit返回Stream的前面n个元素；skip则是扔掉前n个元素
+        List<String> personList2 = list3.stream().
+                map(Student::getName).limit(10).skip(3).collect(Collectors.toList());
+        System.out.println(personList2);
+        // min/max/distinct
         /**
          * 完结操作之Match匹配 返回boolean类型
          */
@@ -120,8 +129,8 @@ public class StreamDemo {
         /**
          * 完结操作之收集(collect) 将变换的stream元素收集 返回变化后的集合
          */
-        List<String> listNew = list.stream().filter(s -> s.startsWith("b")).sorted().collect(Collectors.toList());
-        System.out.println(listNew );
+        final List<Student> collect = list3.stream().filter(student -> student.getAge() == 1).collect(Collectors.toList());
+        System.out.println(collect);
         /**
          * 完结操作之规约(reduce) 用自己的方式计算元素或者将一个stream中元素以某种规律关联
          */

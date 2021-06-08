@@ -21,14 +21,12 @@ public class TestInheritableThreadLocal {
         }
     }
 
-    static public class Tools {
-        public static inheri tl = new inheri();//==>子线程get()返回的为childValue返回值
-    }
+
     // 作为子线程获取main(父线程中)
     static public class ThreadA extends Thread{
         @Override
         public void run() {
-            System.out.println(Tools.tl.get());
+            System.out.println(new inheri().get());
         }
     }
 
@@ -36,8 +34,9 @@ public class TestInheritableThreadLocal {
 
         Thread.currentThread().setName("thread-main");
         try {
+            // 子线程get()返回的为childValue返回值
             for (int i = 0; i < 3; i++) {
-                System.out.println("       在"+Thread.currentThread().getName()+"线程中取值=" + Tools.tl.get());
+                System.out.println("       在"+Thread.currentThread().getName()+"线程中取值=" + new inheri().get());
                 Thread.sleep(100);
             }
             Thread.sleep(1000);

@@ -6,25 +6,13 @@ import java.util.concurrent.*;
 
 /**
  * @Description:
- *  //创建一个线程池
- *     ExecutorService pool = Executors.newFixedThreadPool(taskSize);
+ *  FixedThreadPool 示例
  * @author: LinWeiQi
  */
 public class FistExecutor {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        FistExecutor fistExecutor = new FistExecutor();
-        List<Future> list = fistExecutor.t1();
-        //获取并发运行结果
-        for (Future future : list) {
-
-            System.out.println(future.get().toString());
-        }
-        fistExecutor.t2();
-    }
     int taskSize = 3;
     //创建一个线程池
     ExecutorService pool = Executors.newFixedThreadPool(taskSize);
-    ExecutorService pool2 = Executors.newFixedThreadPool(taskSize);
 
     public List<Future> t1() {
         //创建多个有返回值的任务
@@ -44,7 +32,9 @@ public class FistExecutor {
         pool.shutdown();
         return list;
     }
+    ExecutorService pool2 = Executors.newFixedThreadPool(taskSize);
     public void t2(){
+        // for（；；）相当于while（1） 死循环
         for(;;){
             pool2.execute(new Runnable() {
                 @Override
@@ -59,4 +49,15 @@ public class FistExecutor {
             });
         }
     }
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        FistExecutor fistExecutor = new FistExecutor();
+        List<Future> list = fistExecutor.t1();
+        //获取并发运行结果
+        for (Future future : list) {
+
+            System.out.println(future.get().toString());
+        }
+        fistExecutor.t2();
+    }
+
 }
