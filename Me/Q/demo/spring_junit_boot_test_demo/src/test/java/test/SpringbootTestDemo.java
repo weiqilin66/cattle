@@ -1,3 +1,4 @@
+/*
 package test;
 
 import org.junit.Test;
@@ -6,11 +7,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.wayne.DemoApp;
 
+*/
 /**
  * @TODO:   SpringbootTest
  * @Runwith
  * @author: lwq
- */
+ *//*
+
 @SpringBootTest(classes = {DemoApp.class})
 @RunWith(SpringRunner.class)
 public class SpringbootTestDemo {
@@ -19,3 +22,4 @@ public class SpringbootTestDemo {
     public void t1(){}
 
 }
+*/

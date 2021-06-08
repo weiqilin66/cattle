@@ -11,6 +11,7 @@
     <modules>
         <module>projects/es</module>
         <module>projects/es-ik-remote</module>
+        <module>test-all</module>
     </modules>
 
 </project>
