@@ -45,4 +45,8 @@ public class Student {
         hashno = 13 * hashno + (name == null ? 0 : name.hashCode());
         return hashno;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
