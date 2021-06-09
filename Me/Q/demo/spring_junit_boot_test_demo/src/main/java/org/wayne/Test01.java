@@ -13,12 +13,12 @@ public class Test01 {
         final BigDecimal decimal = new BigDecimal(fuckStr);
         System.out.println(decimal);
         /**
-         * 结果 23714694.66   我勒个去
+         * bug1结果 23714694.66   我勒个去
          */
         int i = fuckStr.indexOf(".");
         if (i!=-1) {// 有小数
             int litterLength = fuckStr.length()-i-1;
-            int end = litterLength>=3?i+3:i+litterLength;
+            int end = litterLength>=2?i+2:i+litterLength;
             final String rs = fuckStr.substring(0, end+1);
             System.out.println(rs);
         }else {//没小数
@@ -26,6 +26,9 @@ public class Test01 {
             System.out.println(dec);
 
         }
+        /**
+         * bug2 如果数据库的精度小于当前精度 ,会自动四舍五入 导致数值不对
+         */
 
     }
 }
