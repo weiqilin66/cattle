@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>base-server</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>card-server</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.wayne</groupId>
-            <artifactId>wayne_common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <!--####################  base   ######################-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -44,17 +44,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--####################  secutity   ######################-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <!--####################  数据   ######################-->
         <dependency>
             <groupId>mysql</groupId>
@@ -80,10 +69,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
-
-
     </dependencies>
-
 
     <build>
         <plugins>
@@ -93,5 +79,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
