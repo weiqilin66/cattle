@@ -8,7 +8,6 @@ import java.util.*;
 /**
  * @author: lwq
  */
-@Deprecated
 public class UtilsQ {
     final static SimpleDateFormat YYYY_MM_DD_FORMAT;
     final static SimpleDateFormat MM_DD_FORMAT;
@@ -27,8 +26,6 @@ public class UtilsQ {
      *
      * @param dataDay     当天
      * @param freeDayList 休息日集合
-     * @return
-     * @throws ParseException
      */
     public static String getNextWorkDay(String dataDay, List<String> freeDayList) throws ParseException {
         dataDay = addOrSubDay(dataDay, 1);
@@ -44,8 +41,6 @@ public class UtilsQ {
      *
      * @param minDate
      * @param bigDate
-     * @return
-     * @throws ParseException
      */
     public static int getBetweenDayCounts(String minDate, String bigDate) throws ParseException {
         final Date p1 = YYYY_MM_DD_FORMAT.parse(bigDate);
@@ -56,9 +51,6 @@ public class UtilsQ {
     /**
      * 日期加减
      *
-     * @param date
-     * @param count
-     * @return
      */
     public static String addOrSubDay(String date, int count) throws ParseException {
         final Date parse = YYYY_MM_DD_FORMAT.parse(date);
@@ -78,9 +70,6 @@ public class UtilsQ {
     /**
      * 获取2个日期之间的日期数组
      *
-     * @param start
-     * @param end
-     * @return
      */
     public static List<Date> getBetweenDayArray(Date start, Date end) {
         List<Date> dates = new ArrayList<>();
@@ -114,15 +103,6 @@ public class UtilsQ {
         }
         dates.add(end);
         return dates;
-    }
-
-    /**
-     * 为空判断
-     *
-     * @return true 为空 false非空
-     */
-    public static boolean isEmptyList(List list) {
-        return list == null || list.size() == 0;
     }
 
     public static boolean isEmptyStr(String s) {
