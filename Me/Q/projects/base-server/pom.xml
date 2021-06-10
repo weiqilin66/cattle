@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.wayne</groupId>
-    <artifactId>hrserve</artifactId>
+    <artifactId>base-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>hr</name>
     <description>hr</description>

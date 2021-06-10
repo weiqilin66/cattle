@@ -16,15 +16,19 @@ public class EsClientUtil {
 
     private static RestClient client;
 
-    public static RestClient getInstance(List<Map<String,Object>> mapList){
-        if (client==null) {
+    private EsClientUtil() {
+    }
+
+    public static RestClient getInstance() {
+        if (client == null) {
             final String host = "192.168.2.2";
             final RestClientBuilder builder = RestClient.builder(
-                    new HttpHost(host,9202,"http")
+                    new HttpHost(host, 9200, "http"),
+                    new HttpHost(host, 9201, "http"),
+                    new HttpHost(host, 9202, "http")
             );
             client = builder.build();
         }
         return client;
-
     }
 }

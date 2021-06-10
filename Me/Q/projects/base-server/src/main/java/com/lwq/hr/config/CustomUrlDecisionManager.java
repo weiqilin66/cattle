@@ -18,7 +18,7 @@ import java.util.Collection;
 @Component
 public class CustomUrlDecisionManager implements AccessDecisionManager {
     /**
-     * @param [ Authentication:存储登录信息  Collection<ConfigAttribute>:MyFilter返回的collection]
+     * @params  Authentication:存储登录信息  Collection<ConfigAttribute>:MyFilter返回的collection]
      * @date 2020/1/31
      */
     @Override

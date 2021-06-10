@@ -20,7 +20,7 @@ public class BeanUtilsQ implements ApplicationContextAware {
     private static Logger log = LoggerFactory.getLogger(BeanUtilsQ.class);
     private static ApplicationContext applicationContext;
 
-    public BeanUtilsQ() {
+    private BeanUtilsQ() {
     }
 
     @Override
