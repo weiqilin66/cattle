@@ -2,7 +2,7 @@ package org.wayne.reflex;
 import java.lang.reflect.Method;
 
 /**
- * @TODO:  反射demo
+ * @Description:  反射demo
  * @author: lwq
  */
 public class ReflexDemo {

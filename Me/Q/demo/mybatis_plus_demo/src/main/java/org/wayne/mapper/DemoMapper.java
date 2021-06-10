@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 @Mapper

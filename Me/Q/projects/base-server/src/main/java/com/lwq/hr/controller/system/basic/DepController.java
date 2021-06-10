@@ -21,7 +21,7 @@ public class DepController {
 
     /**
      * @param -1 最上级的id
-     * @TODO 根据父ID递归 获取所有部门
+     * @Description 根据父ID递归 获取所有部门
      * @date 2020/2/13
      */
     @GetMapping("/")
@@ -30,7 +30,7 @@ public class DepController {
     }
 
     /**
-     * @TODO 调用存储过程批量执行sql
+     * @Description 调用存储过程批量执行sql
      * 优点 : 当分开部署时 数据库一个服务器,应用多次调用sql 存在网络问题
      * 缺点 : 数据库耦合 不好做数据库迁移
      * @date 2020/2/13

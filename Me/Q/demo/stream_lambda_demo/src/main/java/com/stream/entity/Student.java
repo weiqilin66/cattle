@@ -1,7 +1,7 @@
 package com.stream.entity;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public class Student {

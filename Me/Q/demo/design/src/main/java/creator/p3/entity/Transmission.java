@@ -1,7 +1,7 @@
 package creator.p3.entity;
 
 /**
- * @TODO: 产品特征 3
+ * @Description: 产品特征 3
  * @author: lwq
  */
 public enum Transmission {

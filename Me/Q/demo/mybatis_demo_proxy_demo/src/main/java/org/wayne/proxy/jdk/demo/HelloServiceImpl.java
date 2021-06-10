@@ -1,7 +1,7 @@
 package org.wayne.proxy.jdk.demo;
 
 /**
- * @TODO: 真实服务对象
+ * @Description: 真实服务对象
  * @author: lwq
  */
 public class HelloServiceImpl implements HelloService {

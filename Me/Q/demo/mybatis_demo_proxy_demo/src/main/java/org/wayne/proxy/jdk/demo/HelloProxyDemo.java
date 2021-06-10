@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * @TODO: JDK代理范例,实现java.lang.reflect.InvocationHandler
+ * @Description: JDK代理范例,实现java.lang.reflect.InvocationHandler
  * @author: lwq
  */
 public class HelloProxyDemo implements InvocationHandler {
@@ -26,7 +26,7 @@ public class HelloProxyDemo implements InvocationHandler {
 
     /**
      * 回调方法
-     @TODO 通过代理对象调用方法,会进入这个方法
+     @Description 通过代理对象调用方法,会进入这个方法
      @参数 proxy代理对象 method调用的方法 args方法的参数
      * @return
      * @throws Throwable

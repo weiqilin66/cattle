@@ -1,7 +1,7 @@
 package org.wayne.mythread._example;
 
 /**
- * @TODO: 队列+锁机制
+ * @Description: 队列+锁机制
  * @author: lwq
  */
 public class SafeWeb12306Synchronized implements Runnable {

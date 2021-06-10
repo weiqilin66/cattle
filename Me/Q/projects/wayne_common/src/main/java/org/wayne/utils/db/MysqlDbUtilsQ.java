@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @TODO: 多数据源表配置设计
+ * @Description: 多数据源表配置设计
  * @author: lwq
  */
 public class MysqlDbUtilsQ {

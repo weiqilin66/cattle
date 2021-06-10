@@ -8,7 +8,7 @@ import org.wayne.mapper.Blog;
 import org.wayne.mapper.DemoMapper;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 @RestController

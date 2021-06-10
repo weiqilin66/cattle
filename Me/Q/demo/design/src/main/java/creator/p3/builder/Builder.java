@@ -3,7 +3,7 @@ package creator.p3.builder;
 import creator.p3.entity.*;
 
 /**
- * @TODO: 通用生成器接口
+ * @Description: 通用生成器接口
  * @author: lwq
  */
 public interface Builder {

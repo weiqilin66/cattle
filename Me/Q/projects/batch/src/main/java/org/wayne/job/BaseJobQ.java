@@ -5,7 +5,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 /**
- * @TODO: 定时任务基础类
+ * @Description: 定时任务基础类
  * @author: lwq
  */
 public class BaseJobQ implements Job {

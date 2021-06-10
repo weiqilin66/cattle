@@ -1,7 +1,7 @@
 package org.wayne.proxy.static_demo;
 
 /**
- * @TODO: 静态代理
+ * @Description: 静态代理
  * 1 真实对象 你
  * 2 代理对象 婚介公司
  *

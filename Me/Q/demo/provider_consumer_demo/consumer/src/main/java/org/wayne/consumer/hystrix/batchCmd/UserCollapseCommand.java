@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @TODO
+ * @Description
  * @return 请求合并核心方法类
  * @param
  * @date   2020/7/7

@@ -1,7 +1,7 @@
 package org.wayne.mapper;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public class Blog {

@@ -19,7 +19,7 @@ import java.util.Map;
 
 
 /**
- * @TODO 多数据源远程配置设计
+ * @Description 多数据源远程配置设计
  */
 @Component
 public class DataSourceConfig implements BeanDefinitionRegistryPostProcessor, ApplicationContextAware {

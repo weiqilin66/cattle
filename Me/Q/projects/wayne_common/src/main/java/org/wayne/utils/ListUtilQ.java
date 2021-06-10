@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public class ListUtilQ {
@@ -31,7 +31,7 @@ public class ListUtilQ {
         }
     }
     /**
-     * @TODO 快速比较两个String集合的差异
+     * @Description 快速比较两个String集合的差异
      * 1.利用map快速定位key是否存在的特性
      * 2.使用并行stream
      *  true 返回交集 false差集

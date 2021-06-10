@@ -3,7 +3,7 @@ package creator.p3.builder;
 import creator.p3.entity.*;
 
 /**
- * @TODO:  汽车生成器
+ * @Description:  汽车生成器
  * @author: lwq
  */
 public class CarBuilder implements Builder{

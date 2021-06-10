@@ -9,7 +9,7 @@ import org.wayne.DemoApp;
 import org.wayne.mapper.DemoMapper;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 @SpringBootTest(classes = {DemoApp.class})

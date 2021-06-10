@@ -58,7 +58,7 @@ public class ChartController {
 
     /**
      * @return lwq.returnbean.RespBeanQ
-     * @TODO 根据差价再分析 最高价格两张以上的店铺作为坑的目标 / 取集合中对象某个字段相同的对象map.containsKey()
+     * @Description 根据差价再分析 最高价格两张以上的店铺作为坑的目标 / 取集合中对象某个字段相同的对象map.containsKey()
      * @date 2020/5/15
      */
     @GetMapping("/thief")
@@ -109,7 +109,7 @@ public class ChartController {
     }
 
     /**
-     * @TODO 折线图接口
+     * @Description 折线图接口
      * @date 2020/5/13
      */
     @GetMapping("/byTitle")
@@ -186,7 +186,7 @@ public class ChartController {
     }
 
     /**
-     * @TODO 查当日价格差超过20的宝贝
+     * @Description 查当日价格差超过20的宝贝
      * @date 2020/3/11
      */
     @GetMapping("/maxAndMin")
@@ -214,7 +214,7 @@ public class ChartController {
     /**
      * @param [days]
      * @return java.util.Date
-     * @TODO 获取近days-1天的日期
+     * @Description 获取近days-1天的日期
      * @date 2020/5/12
      */
     private static Date getDateAdd(int days) {
@@ -247,7 +247,7 @@ public class ChartController {
     /**
      * @param
      * @return
-     * @TODO 快速比较两个集合的差异(主键)
+     * @Description 快速比较两个集合的差异(主键)
      * @date 2020/5/12
      */
     private List<String> getDIffList(List<String> allOpenidList, List<String> dbOpenidList) {

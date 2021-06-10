@@ -23,7 +23,7 @@ public class PoiUtilsQ {
     private final static String EXCEL_2007_U = ".xlsx";
 
     /**
-     * @TODO 通用导入 读取数据
+     * @Description 通用导入 读取数据
      * @date 2020/2/16
      */
     public static List<List<Object>> myImportExcel(InputStream in, String fileName) throws Exception {
@@ -67,7 +67,7 @@ public class PoiUtilsQ {
     }
 
     /**
-     * @TODO 上传excel时判断使用的POI版本
+     * @Description 上传excel时判断使用的POI版本
      */
     public static Workbook myGetWorkbook(InputStream inStr, String fileName) throws Exception {
         Workbook workbook = null;
@@ -83,7 +83,7 @@ public class PoiUtilsQ {
     }
 
     /**
-     * @TODO 统一格式化 表格中 某列 的数值小位数,时间格式  --未完善
+     * @Description 统一格式化 表格中 某列 的数值小位数,时间格式  --未完善
      * @date 2020/2/16
      */
     public Object getCellValue(Cell cell) {
@@ -116,7 +116,7 @@ public class PoiUtilsQ {
 
     /**
      * @param [lineStyleMap行样式, columnWidthMap列宽, headLists表头内容行集合, dataList数据内容行集合]
-     * @TODO excel2003导出  废弃 作为代码参考 poi应该定制化util接口 参数只传入一个数据data
+     * @Description excel2003导出  废弃 作为代码参考 poi应该定制化util接口 参数只传入一个数据data
      * @date 2020/2/16
      */
     public static Workbook MyExportExcel2003(HashMap<Integer, CellStyle> lineStyleMap, HashMap<Integer, Integer> columnWidthMap, List<List<String>> headLists, List<List<?>> dataList) {

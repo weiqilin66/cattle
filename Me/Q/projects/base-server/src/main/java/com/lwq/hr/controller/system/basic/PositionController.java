@@ -57,7 +57,7 @@ public class PositionController {
 
     /**
      * @param [ids] 传入的id数组
-     * @TODO 批量删除
+     * @Description 批量删除
      * @date 2020/2/4
      */
     @DeleteMapping("/")

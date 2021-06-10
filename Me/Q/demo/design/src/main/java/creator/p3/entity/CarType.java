@@ -1,7 +1,7 @@
 package creator.p3.entity;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public enum CarType {

@@ -6,7 +6,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @TODO:   三元素: 调度器 任务 触发器
+ * @Description:   三元素: 调度器 任务 触发器
  * @author: lwq
  */
 public class DemoSchedule {

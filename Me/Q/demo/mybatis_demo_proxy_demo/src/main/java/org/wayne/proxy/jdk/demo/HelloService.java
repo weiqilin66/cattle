@@ -1,7 +1,7 @@
 package org.wayne.proxy.jdk.demo;
 
 /**
- * @TODO: jdk代理必须有接口
+ * @Description: jdk代理必须有接口
  * @author: lwq
  */
 public interface HelloService {

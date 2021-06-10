@@ -48,7 +48,7 @@ public class EmpBasicController {
 
     /**
      * @param RequestParam 指定请求参数的相关属性
-     * @TODO 分页查询
+     * @Description 分页查询
      * @example select *from table limit 5,10  查询第6-15条数据
      * @date 2020/2/13
      */
@@ -65,7 +65,7 @@ public class EmpBasicController {
     /*---------------------------  文件上传下载  -------------------------------------------------*/
 
     /**
-     * @TODO ResponseEntity<byte [ ]> 该类实现响应头、文件数据（以字节存储）、状态封装在一起交给浏览器处理以实现浏览器的文件下载。
+     * @Description ResponseEntity<byte [ ]> 该类实现响应头、文件数据（以字节存储）、状态封装在一起交给浏览器处理以实现浏览器的文件下载。
      */
     @GetMapping("/export")
     public ResponseEntity<byte[]> export() {

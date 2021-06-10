@@ -3,7 +3,7 @@ package org.wayne.mq.demo.server;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
- * @TODO: 消息处理中心 负责消息{ 接收 存储 转发 }
+ * @Description: 消息处理中心 负责消息{ 接收 存储 转发 }
  * @author: lwq
  */
 public class BrokerQ {
@@ -43,7 +43,7 @@ public class BrokerQ {
     }
 
     /**
-     * @TODO ArrayBlockingQueue 介绍
+     * @Description ArrayBlockingQueue 介绍
      * offer(E e)：表示如果可能的话，将 e 加到 BlockingQueue 里，即如果 BlockingQueue 可以容纳，则返回 true，否则返回 false
      * poll(time)：取走 BlockingQueue 里排在首位的对象，若不能立即取出，则可以等 time 参数规定的时间,取不到时返回 null
      */

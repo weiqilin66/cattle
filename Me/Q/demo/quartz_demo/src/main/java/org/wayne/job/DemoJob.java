@@ -5,7 +5,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public class DemoJob implements Job {

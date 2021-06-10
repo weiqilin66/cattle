@@ -2,7 +2,7 @@ package org.wayne.entity;
 
 
 /**
- * @TODO: 常量类
+ * @Description: 常量类
  * @author: lwq
  */
 public class ConstantsQ {

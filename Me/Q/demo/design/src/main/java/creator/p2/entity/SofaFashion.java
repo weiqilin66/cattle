@@ -1,7 +1,7 @@
 package creator.p2.entity;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public class SofaFashion implements ISofa{

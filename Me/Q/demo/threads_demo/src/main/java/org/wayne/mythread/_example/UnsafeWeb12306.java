@@ -1,7 +1,7 @@
 package org.wayne.mythread._example;
 
 /**
- * @TODO: 模拟抢票,网络延迟
+ * @Description: 模拟抢票,网络延迟
  * 一份资源,多人共享(修改) = 线程不安全
  * 线程不安全导致的问题: 负数 复数
  * @author: lwq

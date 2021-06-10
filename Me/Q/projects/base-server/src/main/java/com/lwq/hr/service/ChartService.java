@@ -158,7 +158,7 @@ public class ChartService {
     }
 
     /**
-     * @TODO 分析宝贝差价 加入缓存 测试时候记得关闭缓存
+     * @Description 分析宝贝差价 加入缓存 测试时候记得关闭缓存
      * 最大价格取二手店铺的 最低价格卡多个条件取符合规则的
      * @date 2020/5/15
      */
@@ -209,7 +209,7 @@ public class ChartService {
                 Goods max;
                 Goods min;
                 /**
-                 * @TODO Lambda获取集合中某个属性最大的对象
+                 * @Description Lambda获取集合中某个属性最大的对象
                  * @param  maxList集合 sales对象中的属性
                  * @date 2020/5/13
                  */

@@ -1,7 +1,7 @@
 package org.wayne.example;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public class Blog {

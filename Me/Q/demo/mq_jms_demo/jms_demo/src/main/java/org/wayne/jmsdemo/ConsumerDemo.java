@@ -7,7 +7,7 @@ import javax.jms.*;
 
 
 /**
- * @TODO:  ActiveMq 如何通过JMS完成消息队列功能
+ * @Description:  ActiveMq 如何通过JMS完成消息队列功能
  * 消息队列提供商 实现了一系列JMS的接口
  * 底层如何实现 在使用JMS连接使用MQ使用无需知道
  * @author: lwq

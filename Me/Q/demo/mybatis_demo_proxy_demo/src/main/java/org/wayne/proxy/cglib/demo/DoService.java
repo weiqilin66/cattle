@@ -1,7 +1,7 @@
 package org.wayne.proxy.cglib.demo;
 
 /**
- * @TODO: 被代理的对象 不用实现某个接口
+ * @Description: 被代理的对象 不用实现某个接口
  * @author: lwq
  */
 public class DoService {

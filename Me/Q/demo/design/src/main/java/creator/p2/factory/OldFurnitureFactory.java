@@ -6,7 +6,7 @@ import creator.p2.entity.ISofa;
 import creator.p2.entity.SofaOld;
 
 /**
- * @TODO: 返回一系列老旧沙发
+ * @Description: 返回一系列老旧沙发
  * @author: lwq
  */
 public class OldFurnitureFactory implements FurnitureFactory{

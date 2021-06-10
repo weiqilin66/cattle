@@ -10,7 +10,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 /**
- * @TODO: 客户端类
+ * @Description: 客户端类
  * @author: lwq
  */
 public class MqClient {

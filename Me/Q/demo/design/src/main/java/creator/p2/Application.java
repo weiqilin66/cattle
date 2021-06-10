@@ -5,7 +5,7 @@ import creator.p2.entity.ISofa;
 import creator.p2.factory.FurnitureFactory;
 
 /**
- * @TODO: 客户端代码
+ * @Description: 客户端代码
  * @author: lwq
  */
 public class Application {

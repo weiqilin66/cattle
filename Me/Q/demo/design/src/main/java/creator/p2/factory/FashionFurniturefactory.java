@@ -6,7 +6,7 @@ import creator.p2.entity.ISofa;
 import creator.p2.entity.SofaFashion;
 
 /**
- * @TODO: 返回一系列
+ * @Description: 返回一系列
  * @author: lwq
  */
 public class FashionFurniturefactory implements FurnitureFactory{

@@ -1,7 +1,7 @@
 package creator.p3.entity;
 
 /**
- * @TODO: 产品特征
+ * @Description: 产品特征
  * @author: lwq
  */
 public class Engine {

@@ -6,7 +6,7 @@ import creator.p2.factory.FurnitureFactory;
 import creator.p2.factory.OldFurnitureFactory;
 
 /**
- * @TODO: 配置类 让客户端使用某一类工厂
+ * @Description: 配置类 让客户端使用某一类工厂
  * @author: lwq
  */
 public class ApplicationConfig {

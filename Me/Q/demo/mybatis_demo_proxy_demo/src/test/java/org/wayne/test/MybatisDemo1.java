@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @TODO: 原生builder->sqlSessionFactory->sqlSession->mapper->执行sql
+ * @Description: 原生builder->sqlSessionFactory->sqlSession->mapper->执行sql
  * @author: lwq
  */
 public class MybatisDemo1 {

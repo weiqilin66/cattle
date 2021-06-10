@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JackSonConfig {
     /**
-     * @TODO 修改jackson 配置日期格式,可以注入objectMapper实现
+     * @Description 修改jackson 配置日期格式,可以注入objectMapper实现
      * @date 2020/1/16
      */
 //    @Bean

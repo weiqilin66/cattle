@@ -7,7 +7,7 @@ import org.springframework.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 /**
- * @TODO: CGLIB代理范例, 实现 org.springframework.cglib.proxy.MethodInterceptor
+ * @Description: CGLIB代理范例, 实现 org.springframework.cglib.proxy.MethodInterceptor
  * 不需要接口 可以代理任何类
  * @author: lwq
  */

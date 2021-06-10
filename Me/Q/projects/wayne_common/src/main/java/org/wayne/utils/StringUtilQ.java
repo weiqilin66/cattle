@@ -3,7 +3,7 @@ package org.wayne.utils;
 import java.util.Scanner;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public class StringUtilQ {
@@ -54,7 +54,7 @@ public class StringUtilQ {
 
     /**
      * @return java.lang.String
-     * @TODO 入参为提问 并返回下一行控制器输入的值
+     * @Description 入参为提问 并返回下一行控制器输入的值
      */
     public static String sc(String tip) {
         Scanner scanner = new Scanner(System.in);

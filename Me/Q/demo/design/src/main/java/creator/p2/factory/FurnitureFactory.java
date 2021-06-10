@@ -4,7 +4,7 @@ import creator.p2.entity.IChair;
 import creator.p2.entity.ISofa;
 
 /**
- * @TODO: 家具工厂
+ * @Description: 家具工厂
  * @author: lwq
  */
 public interface FurnitureFactory {

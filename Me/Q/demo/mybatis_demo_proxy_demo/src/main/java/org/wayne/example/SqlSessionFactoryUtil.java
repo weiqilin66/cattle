@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @TODO: 单例模式创建SqlSessionFactory==>构造私有化,提供static方法返回唯一单例
+ * @Description: 单例模式创建SqlSessionFactory==>构造私有化,提供static方法返回唯一单例
  * @author: lwq
  */
 public class SqlSessionFactoryUtil {

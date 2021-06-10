@@ -3,7 +3,7 @@ package org.wayne;
 import java.math.BigDecimal;
 
 /**
- * @TODO: new Bigdecimal() 遇上科学计数字符串
+ * @Description: new Bigdecimal() 遇上科学计数字符串
  * @author: lwq
  */
 public class Test01 {
