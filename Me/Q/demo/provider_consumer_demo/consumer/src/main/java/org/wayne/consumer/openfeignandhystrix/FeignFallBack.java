@@ -41,4 +41,9 @@ public class FeignFallBack implements FeignService {
     public String del(Integer id) {
         return null;
     }
+
+    @Override
+    public String testTimeOut(int ms) {
+        return "timeout";
+    }
 }

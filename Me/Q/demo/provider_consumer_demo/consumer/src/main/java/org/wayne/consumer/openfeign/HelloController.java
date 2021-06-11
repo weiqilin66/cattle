@@ -41,4 +41,10 @@ public class HelloController {
         return feignService.del(3);
 
     }
+    @GetMapping("/timeout")
+    public String timeout(int ms){
+        final String s = feignService.testTimeOut(ms);
+        System.out.println(s);
+        return s;
+    }
 }

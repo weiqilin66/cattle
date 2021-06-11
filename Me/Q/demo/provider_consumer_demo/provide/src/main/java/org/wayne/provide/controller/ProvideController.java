@@ -3,7 +3,7 @@ package org.wayne.provide.controller;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import org.wayne.common.entity.User;
+import org.wayne.demo.User;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -77,5 +77,12 @@ public class ProvideController {
             users.add(user);
         }
         return users;
+    }
+    @GetMapping("/testTimeOut")
+    public String testTimeOut(int ms) throws InterruptedException {
+        System.out.println("接收到请求");
+        Thread.sleep(ms);
+        System.out.println("请求被处理");
+        return "s";
     }
 }
