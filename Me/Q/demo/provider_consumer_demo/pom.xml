@@ -5,29 +5,21 @@
     <packaging>pom</packaging><!--父模块打包类型必须为pom-->
 <!--    旗下为孙子工程-->
     <parent>
-        <groupId>org.wayne</groupId>
-        <artifactId>parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <artifactId>study-test</artifactId>
+    <groupId>org.wayne</groupId>
+    <artifactId>provider_consumer_demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>study-test</name>
-
 
     <dependencies>
         <dependency>
             <groupId>org.wayne</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>wayne-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
 
     </dependencies>
 

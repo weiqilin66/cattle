@@ -1,7 +1,8 @@
 package org.wayne.consumer.openfeign;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.wayne.common.entity.User;
+import org.wayne.demo.User;
 
 import javax.annotation.Resource;
 
@@ -12,7 +13,7 @@ import javax.annotation.Resource;
 @RestController
 public class HelloController {
 
-    @Resource
+    @Autowired
     FeignService feignService;
 
     @GetMapping("/feignHello")

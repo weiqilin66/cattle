@@ -5,7 +5,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.wayne.common.entity.User;
+import org.wayne.demo.User;
 
 import javax.annotation.Resource;
 import java.util.Arrays;

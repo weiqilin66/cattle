@@ -6,7 +6,7 @@
 
     <!--common包不能有父类-->
     <groupId>org.wayne</groupId>
-    <artifactId>wayne_common</artifactId>
+    <artifactId>wayne-common</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

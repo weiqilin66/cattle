@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.wayne.common.entity.User;
+import org.wayne.demo.User;
 
 import javax.annotation.Resource;
 import java.net.URI;
