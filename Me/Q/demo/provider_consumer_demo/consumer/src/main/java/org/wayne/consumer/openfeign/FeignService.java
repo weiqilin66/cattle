@@ -35,6 +35,11 @@ public interface FeignService {
     @DeleteMapping("/user3/{id}")
     String del(@PathVariable Integer id);
 
-    @GetMapping("/testTimeOut")
-    String testTimeOut(@RequestParam("ms")int ms);
+    /**
+     * 不加@RequestParam("ms")会被识别成post请求
+     * @param ms
+     * @return
+     */
+    @GetMapping("/testTO")
+    String testTOut(@RequestParam("ms")int ms);
 }

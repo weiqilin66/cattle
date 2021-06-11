@@ -43,7 +43,7 @@ public class FeignFallBack implements FeignService {
     }
 
     @Override
-    public String testTimeOut(int ms) {
+    public String testTOut(int ms) {
         return "timeout";
     }
 }

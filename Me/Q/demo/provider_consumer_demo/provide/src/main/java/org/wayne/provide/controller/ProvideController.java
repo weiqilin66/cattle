@@ -78,7 +78,7 @@ public class ProvideController {
         }
         return users;
     }
-    @GetMapping("/testTimeOut")
+    @GetMapping("/testTO")
     public String testTimeOut(int ms) throws InterruptedException {
         System.out.println("接收到请求");
         Thread.sleep(ms);
