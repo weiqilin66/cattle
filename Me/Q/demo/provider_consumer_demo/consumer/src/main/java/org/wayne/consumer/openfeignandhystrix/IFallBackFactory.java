@@ -46,7 +46,7 @@ public class IFallBackFactory implements FallbackFactory<FeignService> {
 
             @Override
             public String testTimeOut(int ms) {
-                return null;
+                return "timeout";
             }
         };
     }
