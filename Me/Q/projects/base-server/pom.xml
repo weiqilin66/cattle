@@ -8,7 +8,10 @@
         <version>2.2.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <artifactId>base-server</artifactId>
+    <!--指定自己的版本号-->
+    <version>1.0.0.RELEASE</version>
 
     <dependencies>
         <dependency>
@@ -91,7 +94,45 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <!--将插件绑定在某个phase执行,这个executions可以不添加，-->
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--指定生成的镜像名-->
+                    <imageName>${project.artifactId}</imageName>
+                    <!--指定标签-->
+                    <imageTags>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                    <!-- 指定 Dockerfile 路径 ${project.basedir}：项目根路径下-->
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
+                    <!--指定远程 docker api地址，你的docker安装的地址，一定要测试docker是否可以远程访问-->
+                    <dockerHost>http://192.168.2.2:2375</dockerHost>
+                    <!-- 这里是复制 war 包到 docker 容器指定目录配置 -->
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <!--jar 包所在的路径 此处配置的 即对应 target 目录-->
+                            <directory>${project.build.directory}</directory>
+                            <!-- 需要包含的 jar包 ，这里对应的是 Dockerfile中添加的文件名，一定要注意，如果我们不配置finalName 系统自定义， 容易出现问题，所以我建议在<build></build>中记得自定义 <build><finalName>springboot-docker</finalName>-->
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
-
 </project>

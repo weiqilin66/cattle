@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @author: LinWeiQi
  */
 @Configuration
-public class RabbitDirectConfig {
+public class DirectConfig {
     public static final String directName = "exchange1";
 
     //消息队列
