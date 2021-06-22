@@ -37,11 +37,13 @@ public class TopicConfig {
     }
     @Bean
     Binding xiaomiBinding(){
-        return BindingBuilder.bind(xiaomiQueue()).to(topicExchange()).with("xiaomi.#");//所有xiaomi.开头的都会被匹配
+        //所有xiaomi.开头的都会被匹配
+        return BindingBuilder.bind(xiaomiQueue()).to(topicExchange()).with("xiaomi.#");
     }
     @Bean
     Binding phoneBinding(){
-        return BindingBuilder.bind(phoneQueue()).to(topicExchange()).with("#.phone.#");//xiaomi.phone匹配到2个队列
+        //xiaomi.phone匹配到2个队列
+        return BindingBuilder.bind(phoneQueue()).to(topicExchange()).with("#.phone.#");
     }
 }
 

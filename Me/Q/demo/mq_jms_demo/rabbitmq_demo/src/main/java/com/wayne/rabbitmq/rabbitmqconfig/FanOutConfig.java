@@ -25,7 +25,7 @@ public class FanOutConfig {
 
     @Bean
     FanoutExchange fanoutExchange(){
-        return new FanoutExchange("fanout",true,false);
+        return new FanoutExchange("fanoutExchange",true,false);
     }
 
     //2个binding

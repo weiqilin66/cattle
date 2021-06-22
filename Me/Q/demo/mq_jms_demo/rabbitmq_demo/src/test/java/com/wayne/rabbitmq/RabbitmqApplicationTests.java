@@ -16,8 +16,16 @@ class RabbitmqApplicationTests {
     void contextLoads() {
         //1.没指定交换器,使用默认exchange , routingKey为队列名字
         rabbitTemplate.convertAndSend("myQ","默认exchange发送的消息内容");
+
+
+
         //2 directExchange搭配routingKey
         rabbitTemplate.convertAndSend("exchange1","direct","指定转换器和routingKey发送的消息内容");
+
+
+
+
+
         //3 fanout
         rabbitTemplate.convertAndSend("fanout",null,"hello,fanout");
         //4 topic
