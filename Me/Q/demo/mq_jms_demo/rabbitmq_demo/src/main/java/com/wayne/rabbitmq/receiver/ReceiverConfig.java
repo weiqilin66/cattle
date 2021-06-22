@@ -51,10 +51,14 @@ public class ReceiverConfig {
     public SimpleRabbitListenerContainerFactory multiListenerContainer(){
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factoryConfigurer.configure(factory,connectionFactory);
+        // SimpleMessageConverter 转对象 使用这个MessageConverter
         factory.setMessageConverter(new Jackson2JsonMessageConverter());
         factory.setAcknowledgeMode(AcknowledgeMode.NONE);
+        // 默认消费者数
         factory.setConcurrentConsumers(env.getProperty("spring.rabbitmq.listener.concurrency",int.class));
+        // 最大消费者数
         factory.setMaxConcurrentConsumers(env.getProperty("spring.rabbitmq.listener.max-concurrency",int.class));
+        // 预取
         factory.setPrefetchCount(env.getProperty("spring.rabbitmq.listener.prefetch",int.class));
         return factory;
     }

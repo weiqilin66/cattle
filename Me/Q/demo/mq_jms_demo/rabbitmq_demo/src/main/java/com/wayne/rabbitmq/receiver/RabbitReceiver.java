@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class RabbitReceiver {
-
-    @RabbitListener(queues = "myQ")//监听哪个队列
+    // 指定ListenerContainer
+    @RabbitListener(queues = "myQ" ,containerFactory = "multiListenerContainer")
     public void received(String msg){//队列中的消息
         System.out.println("receiver1:"+msg);
     }
