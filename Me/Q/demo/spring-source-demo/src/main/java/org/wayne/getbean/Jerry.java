@@ -1,7 +1,7 @@
 package org.wayne.getbean;
 
 /**
- * @TODO:
+ * @Description:
  * @author: lwq
  */
 public class Jerry implements User{
