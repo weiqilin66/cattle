@@ -7,7 +7,6 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @MapperScan("com.lwq.hr.mapper")
-// 开启springCache
 @EnableCaching
 public class HrApplication {
 
