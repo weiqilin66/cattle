@@ -1,4 +1,4 @@
-package org.wayne.auto;
+package org.wayne.thief.demo;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * @Description:
  * @author: lwq
  */
-public class SeleniumApp {
+public class Seleniumdemo {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "D:\\selenium_driver\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();

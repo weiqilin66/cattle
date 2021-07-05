@@ -5,7 +5,6 @@
     <!--各个项目可以有不同版本的依赖-->
 
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.wayne</groupId>
     <artifactId>projects</artifactId>
     <packaging>pom</packaging>

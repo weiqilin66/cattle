@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: thief
+  profiles:
+    active: dev
+
+server:
+  port: 6001
