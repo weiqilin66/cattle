@@ -1,3 +1,3 @@
 webdriver:
   chrome:
-    driver: 111
+    driver: D:\\chromedriver.exe
