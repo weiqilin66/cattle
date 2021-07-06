@@ -16,26 +16,27 @@ import java.util.List;
  * @author: lwq
  */
 @Configuration
+@SuppressWarnings("all")
 public class SeleniumConfig {
 
     @Bean
-    ChromeDriver config(){
+    ChromeOptions chromeOptions(){
+        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         // 设置为开发者模式，防止被各大网站识别出来使用了Selenium  window.navigator.webdriver检测
         // 高版本无法使用
 //        options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
         // 不加载图片
-        HashMap<String, Object> prefs = new HashMap<>(1);
-        prefs.put("profile.default_content_settings", 2);
-        options.setExperimentalOption("prefs", prefs);
+        options.addArguments("blink-settings=imagesEnabled=false");
+        // 配置参数禁止显示 Chrome正在受到自动软件的控制
+        options.addArguments("--disable-infobars");
+        // 浏览器不提供可视化页面
+//        options.addArguments("--headless");
         // 屏蔽webdriver特征
         options.addArguments("--disable-blink-features");
         options.addArguments("--disable-blink-features=AutomationControlled");
-        String url = "https://s.taobao.com/";
-        ChromeDriver driver = new ChromeDriver(options);
-        driver.get(url);
-        return driver;
+        return options;
     }
 
 

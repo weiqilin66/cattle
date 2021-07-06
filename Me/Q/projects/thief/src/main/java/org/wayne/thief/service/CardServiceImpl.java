@@ -1,0 +1,93 @@
+package org.wayne.thief.service;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.wayne.thief.util.SeUtil;
+import org.wayne.utils.ReUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/**
+ * @Description:
+ * @author: lwq
+ */
+@Service
+public class CardServiceImpl implements ICardService {
+    public static final Logger log = LoggerFactory.getLogger(CardServiceImpl.class);
+    final Random random = new Random();
+
+    @Override
+    public void crawl() throws InterruptedException {
+        ChromeDriver driver= SeUtil.getChromeDriver();
+        String url = "https://s.taobao.com/";
+        driver.get(url);
+        // 窗口最大化
+        driver.manage().window().maximize();
+        final WebElement searchInput = driver.findElementByXPath("//input[@name='q']");
+        searchInput.sendKeys("see you");
+        final WebElement searchBtn = driver.findElementByXPath("//button");
+        Thread.sleep(1000);
+        searchBtn.click();
+        // 是否登录
+        for (; ; ) {
+            if (driver.getCurrentUrl().startsWith("https://login")) {
+                log.info("未登录,休眠15s");
+                Thread.sleep(15000);
+            }
+            break;
+        }
+        log.info("------ 登录成功 ------");
+        // 查询数据
+        List<Object> list = new ArrayList<>();
+        for (Object card : list) {
+            searchData(card);
+        }
+
+    }
+
+    private void searchData(Object card) throws InterruptedException {
+        ChromeDriver driver= SeUtil.getChromeDriver();
+        final WebElement searchInput = driver.findElementByXPath("//input[@name='q']");
+        final WebElement searchBtn = driver.findElementByXPath("//button");
+        searchInput.clear();
+        searchInput.sendKeys("cardName");
+        searchBtn.click();
+        final int millis15 = 10000 + random.nextInt(5) * 10000;
+        Thread.sleep(millis15);
+        // 下一页按钮
+        final List<WebElement> nextPageBtns = driver.findElementsByXPath("//div[@class='pager']//ul[@class='items']//li/a[@class='link']/span[@class='icon icon-btn-next-2-disable']");
+
+        final List<WebElement> sortBtns = driver.findElementsByXPath("//li/a[@data-key='sort']");
+        // 销量排序
+        final WebElement sellSortBtn = sortBtns.get(1);
+        sellSortBtn.click();
+        Thread.sleep(millis15);
+        // 下拉底部 加载元素
+        driver.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        Thread.sleep(2000);
+        // 取js
+        final String pageSource = driver.getPageSource();
+        final String json = ReUtil.findAll(pageSource, "g_page_config = (.*?)}};")+"}}";
+        // 分析json
+        json2info(json);
+        // 下一页
+        if (nextPageBtns==null || nextPageBtns.isEmpty()) {
+            log.info("只有一页");
+            return;
+        }
+
+    }
+
+    private void json2info(String json) {
+
+    }
+
+}
