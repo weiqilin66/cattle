@@ -9,9 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class Seleniumdemo {
     public static void main(String[] args) {
-        System.setProperty("webdriver.chrome.driver", "D:\\selenium_driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        driver.get("http://www.itest.info");
+        driver.get("http://www.baidu.com");
 
         String title = driver.getTitle();
         System.out.printf(title);
