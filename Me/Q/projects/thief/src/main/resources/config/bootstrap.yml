@@ -5,5 +5,5 @@ spring:
     active: dev
 
 server:
-  port: 6001
+  port: 6600
 

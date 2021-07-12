@@ -46,7 +46,7 @@ public class MysqlDbUtilsQ {
     }
 
     public static JdbcTemplate getTemplate(String dbId) {
-        if (!jdbcTemplateMap.contains(dbId)) {
+        if (!jdbcTemplateMap.containsKey(dbId)) {
             if (dbId.indexOf("&") > -1) {
                 String[] dbArr = dbId.split("&");
                 boolean hasDbArr = true;

@@ -6,13 +6,15 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EmbeddedValueResolverAware;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringValueResolver;
 
 /**
- * @Description:
+ * @Description: 实现Aware接口且被Spring扫描到
  * @author: lwq
  */
-public class SeUtil implements EmbeddedValueResolverAware, ApplicationContextAware {
+@Component
+public class AppUtil implements EmbeddedValueResolverAware, ApplicationContextAware {
     private static ChromeDriver chromeDriver;
     private static ApplicationContext context;
     private static StringValueResolver resolver;

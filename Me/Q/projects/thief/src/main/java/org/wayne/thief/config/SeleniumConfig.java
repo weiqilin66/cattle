@@ -25,7 +25,7 @@ public class SeleniumConfig {
         ChromeOptions options = new ChromeOptions();
         // 设置为开发者模式，防止被各大网站识别出来使用了Selenium  window.navigator.webdriver检测
         // 高版本无法使用
-//        options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
         // 不加载图片
         options.addArguments("blink-settings=imagesEnabled=false");

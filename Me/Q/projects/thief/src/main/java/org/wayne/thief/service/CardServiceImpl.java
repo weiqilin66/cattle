@@ -1,17 +1,24 @@
 package org.wayne.thief.service;
 
-import org.openqa.selenium.WebDriver;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.wayne.thief.util.SeUtil;
+import org.wayne.entity.Auctions;
+import org.wayne.entity.Card;
+import org.wayne.entity.JsonRoot;
+import org.wayne.entity.TbBo;
+import org.wayne.thief.mapper.CardMapper;
+import org.wayne.thief.util.AppUtil;
+import org.wayne.utils.FileUtilQ;
 import org.wayne.utils.ReUtil;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -21,12 +28,16 @@ import java.util.Random;
  */
 @Service
 public class CardServiceImpl implements ICardService {
+
     public static final Logger log = LoggerFactory.getLogger(CardServiceImpl.class);
     final Random random = new Random();
+    final int millis15 = 10000 + random.nextInt(5) * 10000;
+    @Autowired
+    CardMapper mapper;
 
     @Override
     public void crawl() throws InterruptedException {
-        ChromeDriver driver= SeUtil.getChromeDriver();
+        ChromeDriver driver = AppUtil.getChromeDriver();
         String url = "https://s.taobao.com/";
         driver.get(url);
         // 窗口最大化
@@ -41,30 +52,47 @@ public class CardServiceImpl implements ICardService {
             if (driver.getCurrentUrl().startsWith("https://login")) {
                 log.info("未登录,休眠15s");
                 Thread.sleep(15000);
+            } else {
+                break;
             }
-            break;
         }
         log.info("------ 登录成功 ------");
         // 查询数据
-        List<Object> list = new ArrayList<>();
-        for (Object card : list) {
+        List<Card> list = mapper.selectList(new QueryWrapper<>());
+        for (Card card : list) {
             searchData(card);
         }
 
     }
 
-    private void searchData(Object card) throws InterruptedException {
-        ChromeDriver driver= SeUtil.getChromeDriver();
+    private void searchData(Card card) throws InterruptedException {
+        ChromeDriver driver = AppUtil.getChromeDriver();
         final WebElement searchInput = driver.findElementByXPath("//input[@name='q']");
         final WebElement searchBtn = driver.findElementByXPath("//button");
         searchInput.clear();
-        searchInput.sendKeys("cardName");
+        searchInput.sendKeys(card.getCardName());
         searchBtn.click();
-        final int millis15 = 10000 + random.nextInt(5) * 10000;
         Thread.sleep(millis15);
         // 下一页按钮
         final List<WebElement> nextPageBtns = driver.findElementsByXPath("//div[@class='pager']//ul[@class='items']//li/a[@class='link']/span[@class='icon icon-btn-next-2-disable']");
+        crawlBySellSort();
+        // 下一页
+        if (nextPageBtns == null || nextPageBtns.isEmpty()) {
+            log.info("只有一页");
+            return;
+        }
+        for (int i = 0; i < nextPageBtns.size(); i++) {
+            nextPageBtns.get(0).click();
+            crawlBySellSort();
+        }
+        driver.close();
+    }
 
+    /**
+     * 按销量爬取
+     */
+    void crawlBySellSort() throws InterruptedException {
+        ChromeDriver driver = AppUtil.getChromeDriver();
         final List<WebElement> sortBtns = driver.findElementsByXPath("//li/a[@data-key='sort']");
         // 销量排序
         final WebElement sellSortBtn = sortBtns.get(1);
@@ -75,18 +103,43 @@ public class CardServiceImpl implements ICardService {
         Thread.sleep(2000);
         // 取js
         final String pageSource = driver.getPageSource();
-        final String json = ReUtil.findAll(pageSource, "g_page_config = (.*?)}};")+"}}";
+        final String json = ReUtil.findAll(pageSource, "g_page_config = (.*?)}};");
+
         // 分析json
         json2info(json);
-        // 下一页
-        if (nextPageBtns==null || nextPageBtns.isEmpty()) {
-            log.info("只有一页");
-            return;
-        }
-
     }
 
+    /**
+     * 数据清洗
+     */
+    @SuppressWarnings("all")
     private void json2info(String json) {
+        // json格式
+        final String all = json.replaceAll("g_page_config = ", "").replaceAll("}};", "");
+        final String data = ReUtil.findAll(all, "\"data\":.*?\"bottomsearch\":");
+        final String resData = data.replace("\"data\":", "").replace("},\"bottomsearch\":", "");
+        final Gson gson = new Gson();
+        JsonRoot jsonRoot;
+        try {
+            jsonRoot = gson.fromJson(resData, JsonRoot.class);
+        } catch (JsonSyntaxException e) {
+            log.error("json数据转实体失败", e);
+            try {
+                FileUtilQ.fileWriterMethod("D:/json.text", json);
+            } catch (IOException ioException) {
+                log.error("json数据转存文件失败", e);
+                return;
+            }
+            return;
+        }
+        infoFiltration(jsonRoot);
+    }
+
+    /**
+     * 数据存储
+     */
+    void infoFiltration(JsonRoot jsonRoot) {
+        final List<Auctions> auctions = jsonRoot.getAuctions();
 
     }
 
