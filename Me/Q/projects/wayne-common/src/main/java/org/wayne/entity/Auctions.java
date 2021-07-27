@@ -22,8 +22,6 @@ public class Auctions {
     private String title;
 
     private String raw_title;
-//    private List<Icon> icon;
-//    private Shopcard shopcard;
 
     private String pic_url;
 

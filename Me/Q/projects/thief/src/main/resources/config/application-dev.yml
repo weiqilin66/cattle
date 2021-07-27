@@ -2,7 +2,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource # 连接池类型
-    url: jdbc:mysql://172.16.201.132:3306/card?characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&rewriteBatchedStatements=true&generateSimpleParameterMetadata=true&useSSL=false  #数据库连接的url
+    url: jdbc:mysql://localhost:3306/fight?characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
     username: root
     password: root
     hikari:
@@ -19,6 +19,10 @@ mybatis-plus:
       id-type: auto
       logic-delete-value: 0
       logic-not-delete-value: 1
+
+logging:
+  level:
+    org.wayne.thief.mapper: debug
 # Feign调用配置
 feign:
   httpclient:

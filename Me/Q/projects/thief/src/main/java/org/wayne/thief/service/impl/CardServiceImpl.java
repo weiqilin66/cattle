@@ -3,6 +3,7 @@ package org.wayne.thief.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
@@ -12,13 +13,16 @@ import org.springframework.stereotype.Service;
 import org.wayne.entity.Auctions;
 import org.wayne.entity.Card;
 import org.wayne.entity.JsonRoot;
+import org.wayne.thief.mapper.GoodsMapper;
 import org.wayne.thief.mapper.CardMapper;
 import org.wayne.thief.service.ICardService;
 import org.wayne.thief.util.AppUtil;
+import org.wayne.utils.DateUtilsQ;
 import org.wayne.utils.FileUtilQ;
 import org.wayne.utils.ReUtil;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -34,6 +38,10 @@ public class CardServiceImpl implements ICardService {
     final int millis15 = 10000 + new Random().nextInt(5) * 10000;
     @Autowired
     CardMapper mapper;
+    @Autowired
+    GoodsMapper goodsMapper;
+
+    Card card;
 
     @Override
     public void crawl() throws InterruptedException {
@@ -60,6 +68,7 @@ public class CardServiceImpl implements ICardService {
         // 查询数据
         List<Card> list = mapper.selectList(new QueryWrapper<>());
         for (Card card : list) {
+            this.card = card;
             searchData(card);
         }
         driver.close();
@@ -131,10 +140,8 @@ public class CardServiceImpl implements ICardService {
             return;
         }
         //存储
-        final List<Auctions> auctions = jsonRoot.getAuctions();
-        for (Auctions auction : auctions) {
-
-        }
+        final List<Auctions> auctionsList = jsonRoot.getAuctions();
+        goodsMapper.batchInsert(auctionsList,card,DateUtilsQ.getCurrentDate(),DateUtilsQ.getCurrentTime());
     }
 
 

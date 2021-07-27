@@ -11,9 +11,11 @@ import java.util.*;
 public class DateUtilsQ {
     final static SimpleDateFormat YYYY_MM_DD_FORMAT;
     final static SimpleDateFormat MM_DD_FORMAT;
+    final static SimpleDateFormat HH_MM_SS_SDF;
 
     static {
         YYYY_MM_DD_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+        HH_MM_SS_SDF = new SimpleDateFormat("HH:mm:ss");
         //严格日期检查
         YYYY_MM_DD_FORMAT.setLenient(false);
         MM_DD_FORMAT = new SimpleDateFormat("MM-dd");
@@ -105,7 +107,12 @@ public class DateUtilsQ {
         return dates;
     }
 
-
+    public static String getCurrentDate(){
+        return YYYY_MM_DD_FORMAT.format(new Date());
+    }
+    public static String getCurrentTime(){
+        return HH_MM_SS_SDF.format(new Date());
+    }
 
 
 }
