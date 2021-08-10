@@ -1,20 +1,42 @@
 package org.wayne.utils;
 
+import org.apache.catalina.Host;
+import org.apache.poi.ss.formula.functions.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.*;
 import java.util.concurrent.TimeUnit;
 
 /**
  * @Description: 各种路径取值
  * @author: LinWeiQi
  */
-public class PathUtilsQ {
+public class WhereAmI {
 
-    final Logger log = LoggerFactory.getLogger(PathUtilsQ.class);
+    final static Logger log = LoggerFactory.getLogger(WhereAmI.class);
+
+    /**
+     * 获取IP地址
+     */
+    public static String getIp4(){
+        final String host;
+        try {
+            InetAddress ip4 = Inet4Address.getLocalHost();
+            host = ip4.getHostAddress();
+        } catch (UnknownHostException e) {
+            log.error("获取Ip地址失败");
+            return "";
+        }
+        return host;
+    }
+
+    /**
+     * 获取类所在包路径
+     */
+    public static String getClassPackage(Class<T> clazz){
+        return clazz.getPackage().getName();
+    }
 
     public static void whereAmI() throws URISyntaxException {
 
@@ -38,9 +60,9 @@ public class PathUtilsQ {
 
         System.out.println("user.dir : " + System.getProperty("user.dir"));
 
-        System.out.println("当前类所在包路径package: " + PathUtilsQ.class.getPackage().getName());
+        System.out.println("当前类所在包路径package: " + WhereAmI.class.getPackage().getName());
 
-        String packName = PathUtilsQ.class.getPackage().getName();
+        String packName = WhereAmI.class.getPackage().getName();
         URI packuri = new URI(packName);
         System.out.println("当前类所在URI: " + packuri.getPath());
 

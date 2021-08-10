@@ -1,5 +1,6 @@
 package org.wayne.thief.util;
 
+import lombok.Data;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.BeansException;
@@ -16,12 +17,12 @@ import org.springframework.util.StringValueResolver;
 @Component
 public class AppUtil implements EmbeddedValueResolverAware, ApplicationContextAware {
     private static ChromeDriver chromeDriver;
-    private static ApplicationContext context;
+    static ApplicationContext context;
     private static StringValueResolver resolver;
 
-    public synchronized static ChromeDriver getChromeDriver(){
+    public synchronized static ChromeDriver getTbChromeDriver(){
         if (chromeDriver==null) {
-            final ChromeOptions chromeOptions = context.getBean("chromeOptions", ChromeOptions.class);
+            final ChromeOptions chromeOptions = context.getBean("tbOptions", ChromeOptions.class);
             chromeDriver =  new ChromeDriver(chromeOptions);
         }
         return chromeDriver;
