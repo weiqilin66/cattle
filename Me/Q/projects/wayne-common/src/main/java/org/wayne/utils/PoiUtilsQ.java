@@ -1,81 +1,173 @@
 package org.wayne.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Description:
  * @author: LinWeiQi
  */
+@Slf4j
 public class PoiUtilsQ {
+
     //2003- 版本的excel
-    private final static String EXCEL_2003_L = ".xls";
+    final static String EXCEL_2003_L = ".xls";
     //2007+ 版本的excel
-    private final static String EXCEL_2007_U = ".xlsx";
+    final static String EXCEL_2007_U = ".xlsx";
 
-    /**
-     * @Description 通用导入 读取数据
-     * @date 2020/2/16
-     */
-    public static List<List<Object>> myImportExcel(InputStream in, String fileName) throws Exception {
-        List<List<Object>> list = null;
+    static Gson gson = new Gson();
 
-        Workbook work = myGetWorkbook(in, fileName);
-        Sheet sheet = null;
-        Row row = null;
-        Cell cell = null;
+    public static void main(String[] args) {
 
-        list = new ArrayList<List<Object>>();
-        //遍历Excel中所有的sheet
-        for (int i = 0; i < work.getNumberOfSheets(); i++) {
-            sheet = work.getSheetAt(i);
-            if (sheet == null) {
-                continue;
-            }
-            //遍历当前sheet中的所有行 2行开始
-            for (int j = sheet.getFirstRowNum(); j <= sheet.getLastRowNum(); j++) {
-                row = sheet.getRow(j);
-                if (row == null || row.getFirstCellNum() == j) {
-                    continue;
-                }
-
-                //遍历所有的列
-                List<Object> li = new ArrayList<Object>();
-                for (int k = row.getFirstCellNum(); k < row.getLastCellNum(); k++) {
-                    cell = row.getCell(k);
-                    if (cell == null) {
-                        continue;
-                    }
-
-                    li.add(cell.getStringCellValue());
-                }
-                list.add(li);
-            }
-        }
-        System.out.println(list);
-        return list;
+        excel2ddl("C:\\Users\\1\\Desktop/帅奇的excel2mysql.xlsx", "");
 
     }
 
+    public static void excel2ddl(String excelPath, String sqlPath) {
+        Workbook workBook;
+        try {
+            workBook = getWorkBook(excelPath);
+        } catch (Exception e) {
+            log.error("生成workBook异常", e);
+            return;
+        }
+        final List<Map<Integer, Object>> maps = readExcel(workBook);
+        log.info(gson.toJson(maps));
+        String tableName = maps.get(0).get(1).toString();
+        String tableComment = maps.get(0).get(3).toString();
+        log.info("表名:{},备注:{}", tableName, tableComment);
+        final StringBuffer sb = new StringBuffer();
+        sb.append("\nDROP TABLE IF EXISTS ").append(tableName).append(";");
+        sb.append("\nCREATE TABLE ").append(tableName).append(" (\n");
+        final String str1 = "',\n";
+
+        for (int i = 2; i < maps.size(); i++) {
+            final Map<Integer, Object> rowMap = maps.get(i);
+            final String colName = String.valueOf(rowMap.get(0));
+            if ("".equals(colName)) {
+                continue;
+            }
+            final String colType = String.valueOf(rowMap.get(1));
+            final String colComment = String.valueOf(rowMap.get(2));
+            final String colNull = String.valueOf(rowMap.get(3));
+            final String colIndex = String.valueOf(rowMap.get(4));
+            final String primary = String.valueOf(rowMap.get(5));
+            log.info("字段名:{},字段类型:{},备注:{},是否可空:{},是否所以索引:{},是否组件:{}",
+                    colName, colType, colComment, colNull, colIndex, primary);
+            sb.append("\t").append(colName).append(" ").append(colType).append(" ");
+            if ("Y".equals(colNull)) {
+                sb.append("DEFAULT NULL ");
+            } else {
+                sb.append("NOT NULL ");
+            }
+            sb.append("COMMENT '").append(colComment).append(str1);
+        }
+        int flag = 0;
+        for (int i = 2; i < maps.size(); i++) {
+            final Map<Integer, Object> rowMap = maps.get(i);
+            final String colName = String.valueOf(rowMap.get(0));
+            if ("".equals(colName)) {
+                continue;
+            }
+            final String colIndex = String.valueOf(rowMap.get(4));
+            final String primary = String.valueOf(rowMap.get(5));
+            if ("Y".equals(primary)) {
+                sb.append("\tPRIMARY KEY (").append(colName).append("),\n");
+                flag = 1;
+            }
+            if ("Y".equals(colIndex)) {
+                sb.append("\tKEY ").append(tableName).append("_").append("0").append(i).append("(")
+                        .append(colName).append(") USING BTREE,\n");
+                flag = 2;
+            }
+
+        }
+
+        if (flag == 1) {
+
+            sb.delete(sb.lastIndexOf(","), ",".length() + sb.lastIndexOf(","));
+            sb.append(")");
+        } else if (flag == 2) {
+            sb.delete(sb.lastIndexOf(",\n"), ",\n".length() + sb.lastIndexOf(",\n"));
+            sb.append("\n)");
+        } else {
+            sb.delete(sb.lastIndexOf(str1), str1.length() + sb.lastIndexOf(str1));
+            sb.append("'\n)");
+        }
+        sb.append("DEFAULT CHARSET=utf8 COMMENT='").append(tableComment).append("';");
+        log.info(sb.toString());
+    }
+
     /**
-     * @Description 上传excel时判断使用的POI版本
+     * 读取数据
      */
-    public static Workbook myGetWorkbook(InputStream inStr, String fileName) throws Exception {
-        Workbook workbook = null;
-        String fileType = fileName.substring(fileName.lastIndexOf("."));
-        if (EXCEL_2003_L.equals(fileType) || EXCEL_2003_L.toUpperCase().equals(fileType)) {
-            workbook = new HSSFWorkbook(inStr);  //2003-
-        } else if (EXCEL_2007_U.equals(fileType) || EXCEL_2007_U.toUpperCase().equals(fileType)) {
-            workbook = new XSSFWorkbook(inStr);  //2007+
+    public static List<Map<Integer, Object>> readExcel(Workbook work) {
+
+        List<Map<Integer, Object>> list = new ArrayList<>();
+
+        //遍历Excel中所有的sheet
+        final int numberOfSheets = work.getNumberOfSheets();
+        log.info("共有sheet {}页", numberOfSheets);
+        for (int i = 0; i < numberOfSheets; i++) {
+            Sheet sheet = work.getSheetAt(i);
+            if (sheet == null) {
+                continue;
+            }
+            final int firstRowNum = sheet.getFirstRowNum();
+            final int lastRowNum = sheet.getLastRowNum();
+            log.info("当前遍历第{}页sheet,首行:{},末行:{}", i, firstRowNum, lastRowNum);
+            for (int j = firstRowNum; j <= lastRowNum; j++) {
+                Row row = sheet.getRow(j);
+                if (row == null) {
+                    continue;
+                }
+                final Map<Integer, Object> dataMap = new HashMap<>();
+                for (int k = row.getFirstCellNum(); k < row.getLastCellNum(); k++) {
+                    Cell cell = row.getCell(k);
+                    if (cell == null) {
+                        dataMap.put(k, "");
+                    } else {
+                        dataMap.put(k, getCellValue(cell));
+                    }
+                }
+                log.info("第{}行对象数据:{}", j, dataMap);
+                list.add(dataMap);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * 根据文件路径中文件名判断excel版本
+     */
+    public static Workbook getWorkBook(String excelPath) throws Exception {
+        InputStream in;
+        Workbook workbook;
+        try {
+            in = new FileInputStream(excelPath);
+        } catch (FileNotFoundException e) {
+            log.error("excel文件不存在", e);
+            throw new Exception();
+        }
+        if (excelPath.contains(EXCEL_2007_U)) {
+            log.info("生成2007版本excel,使用XSSF");
+            workbook = new XSSFWorkbook(in);
+
+        } else if (excelPath.contains(EXCEL_2003_L)) {
+            log.info("生成2003版本excel,使用HSSF");
+            workbook = new HSSFWorkbook(in);
+
         } else {
             throw new Exception("解析的文件格式有误！");
         }
@@ -86,11 +178,11 @@ public class PoiUtilsQ {
      * @Description 统一格式化 表格中 某列 的数值小位数,时间格式  --未完善
      * @date 2020/2/16
      */
-    public Object getCellValue(Cell cell) {
+    public static Object getCellValue(Cell cell) {
         Object value = null;
-        DecimalFormat df = new DecimalFormat("0");  //格式化number String字符
-        SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");  //日期格式化
-        DecimalFormat df2 = new DecimalFormat("0.00");  //格式化数字
+        DecimalFormat df = new DecimalFormat("0");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
+        DecimalFormat df2 = new DecimalFormat("0.00");
 
         if (cell == null || cell.getCellType() == CellType.BLANK) {
             value = "";
@@ -115,7 +207,7 @@ public class PoiUtilsQ {
     }
 
     /**
-     * @param [lineStyleMap行样式, columnWidthMap列宽, headLists表头内容行集合, dataList数据内容行集合]
+     * @params [lineStyleMap行样式, columnWidthMap列宽, headLists表头内容行集合, dataList数据内容行集合]
      * @Description excel2003导出  废弃 作为代码参考 poi应该定制化util接口 参数只传入一个数据data
      * @date 2020/2/16
      */
