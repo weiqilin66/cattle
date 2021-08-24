@@ -30,10 +30,24 @@ public class PoiUtilsQ {
 
     public static void main(String[] args) {
 
-        excel2ddl("C:\\Users\\1\\Desktop/帅奇的excel2mysql.xlsx", "");
+        excel2formatCol("C:\\Users\\1\\Desktop/帅奇的excel2mysql.xlsx");
 
     }
+    public static void excel2formatCol(String excelPath){
+        Workbook workBook;
+        try {
+            workBook = getWorkBook(excelPath);
+        } catch (Exception e) {
+            log.error("生成workBook异常", e);
+            return;
+        }
+        final List<Map<Integer, Object>> maps = readExcel(workBook, 1);
+        log.info(gson.toJson(maps));
 
+        for (Map<Integer, Object> map : maps) {
+            System.out.println(StringUtilQ.toSqlStyle(map.get(0).toString()));
+        }
+    }
     public static void excel2ddl(String excelPath, String sqlPath) {
         Workbook workBook;
         try {
@@ -42,7 +56,7 @@ public class PoiUtilsQ {
             log.error("生成workBook异常", e);
             return;
         }
-        final List<Map<Integer, Object>> maps = readExcel(workBook);
+        final List<Map<Integer, Object>> maps = readExcel(workBook, 0);
         log.info(gson.toJson(maps));
         String tableName = maps.get(0).get(1).toString();
         String tableComment = maps.get(0).get(3).toString();
@@ -54,10 +68,11 @@ public class PoiUtilsQ {
 
         for (int i = 2; i < maps.size(); i++) {
             final Map<Integer, Object> rowMap = maps.get(i);
-            final String colName = String.valueOf(rowMap.get(0));
+            String colName = String.valueOf(rowMap.get(0));
             if ("".equals(colName)) {
                 continue;
             }
+            colName = StringUtilQ.toSqlStyle(colName);
             final String colType = String.valueOf(rowMap.get(1));
             final String colComment = String.valueOf(rowMap.get(2));
             final String colNull = String.valueOf(rowMap.get(3));
@@ -76,10 +91,11 @@ public class PoiUtilsQ {
         int flag = 0;
         for (int i = 2; i < maps.size(); i++) {
             final Map<Integer, Object> rowMap = maps.get(i);
-            final String colName = String.valueOf(rowMap.get(0));
+            String colName = String.valueOf(rowMap.get(0));
             if ("".equals(colName)) {
                 continue;
             }
+            colName = StringUtilQ.toSqlStyle(colName);
             final String colIndex = String.valueOf(rowMap.get(4));
             final String primary = String.valueOf(rowMap.get(5));
             if ("Y".equals(primary)) {
@@ -112,38 +128,48 @@ public class PoiUtilsQ {
     /**
      * 读取数据
      */
-    public static List<Map<Integer, Object>> readExcel(Workbook work) {
+    public static List<Map<Integer, Object>> readExcel(Workbook work, Integer numOfSheet) {
 
         List<Map<Integer, Object>> list = new ArrayList<>();
 
         //遍历Excel中所有的sheet
         final int numberOfSheets = work.getNumberOfSheets();
         log.info("共有sheet {}页", numberOfSheets);
-        for (int i = 0; i < numberOfSheets; i++) {
-            Sheet sheet = work.getSheetAt(i);
-            if (sheet == null) {
+        if (numOfSheet != null) {
+            list = blSheet(work, numOfSheet);
+        } else {
+            for (int i = 0; i < numberOfSheets; i++) {
+                list = blSheet(work, i);
+            }
+        }
+
+        return list;
+    }
+
+    static List<Map<Integer, Object>> blSheet(Workbook workbook, Integer numOfSheet) {
+        List<Map<Integer, Object>> list = new ArrayList<>();
+
+        Sheet sheet = workbook.getSheetAt(numOfSheet);
+        final int firstRowNum = sheet.getFirstRowNum();
+        final int lastRowNum = sheet.getLastRowNum();
+        log.info("当前遍历第{}页sheet,首行:{},末行:{}", numOfSheet, firstRowNum, lastRowNum);
+        for (int j = firstRowNum; j <= lastRowNum; j++) {
+            Row row = sheet.getRow(j);
+            if (row == null) {
                 continue;
             }
-            final int firstRowNum = sheet.getFirstRowNum();
-            final int lastRowNum = sheet.getLastRowNum();
-            log.info("当前遍历第{}页sheet,首行:{},末行:{}", i, firstRowNum, lastRowNum);
-            for (int j = firstRowNum; j <= lastRowNum; j++) {
-                Row row = sheet.getRow(j);
-                if (row == null) {
-                    continue;
+            final Map<Integer, Object> dataMap = new HashMap<>();
+            for (int k = row.getFirstCellNum(); k < row.getLastCellNum(); k++) {
+                Cell cell = row.getCell(k);
+                if (cell == null) {
+                    dataMap.put(k, "");
+                } else {
+                    dataMap.put(k, getCellValue(cell));
                 }
-                final Map<Integer, Object> dataMap = new HashMap<>();
-                for (int k = row.getFirstCellNum(); k < row.getLastCellNum(); k++) {
-                    Cell cell = row.getCell(k);
-                    if (cell == null) {
-                        dataMap.put(k, "");
-                    } else {
-                        dataMap.put(k, getCellValue(cell));
-                    }
-                }
-                log.info("第{}行对象数据:{}", j, dataMap);
-                list.add(dataMap);
             }
+            log.info("第{}行对象数据:{}", j, dataMap);
+            list.add(dataMap);
+
         }
         return list;
     }

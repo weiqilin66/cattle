@@ -14,7 +14,7 @@ public class StringUtilQ {
     /**
      *     下划线命名转为驼峰命名
      */
-    public static String ToCamel(String param) {
+    public static String toCamel(String param) {
         StringBuilder result = new StringBuilder();
         String[] arr = param.split("_");
         for (String s : arr) {
@@ -38,7 +38,7 @@ public class StringUtilQ {
     /**
      * 驼峰命名转为下划线命名
      */
-    public static String ToSqlStyle(String para) {
+    public static String toSqlStyle(String para) {
         StringBuilder sb = new StringBuilder(para);
         int temp = 0;//定位
         if (!para.contains("_")) {
@@ -49,7 +49,7 @@ public class StringUtilQ {
                 }
             }
         }
-        return sb.toString().toUpperCase();
+        return sb.toString();
     }
 
     /**
